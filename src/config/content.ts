@@ -5,7 +5,7 @@ export const siteConfig = {
   social: {
     github: "",
     twitter: "",
-    email: "mailto:darren@darrenjehan.me.uk",
+    email: "",
   },
 };
 
@@ -25,6 +25,12 @@ export const homeContent = {
     light: "/assets/images/IC405.png",
     dark: "/assets/images/IC405.png",
   },
+  skills: [
+    "Astrophotography",
+    "Visual Observing",
+    "Image Processing",
+    "Public Outreach",
+  ]
 };
 
 export const aboutContent = {
@@ -32,7 +38,7 @@ export const aboutContent = {
     title: "The Observatory - The Alan Norman Observatory",
     description: "About the Alan Norman Observatory and its equipment",
   },
-  title: "The Observatory",
+  title: "The Alan Norman Observatory (TANO)",
   description:
     "Based in rural Bedfordshire, the Alan Norman Observatory is a personal observatory dedicated to amateur astronomy and astrophotography.",
   skills: [
@@ -42,11 +48,61 @@ export const aboutContent = {
     "Public Outreach",
   ],
   image: {
-    src: "/assets/images/about/observatory.jpg",
+    src: "/assets/images/about/new_tano.jpg",
     alt: "The Alan Norman Observatory",
   },
   experience: {
     title: "Memberships & Involvement",
+    items: [
+      {
+        period: "Current",
+        position: "Administrator",
+        company: "Stargazers Lounge",
+        description:
+          "One of the admin team on one of the world's largest amateur astronomy forums.",
+      },
+      {
+        period: "Current",
+        position: "Active Member",
+        company: "Bedford Astronomical Society",
+        description:
+          "Regular member and participant in outreach events and public observing sessions.",
+      },
+      {
+        period: "Current",
+        position: "Active Member",
+        company: "Letchworth and District Astronomical Society",
+        description:
+          "Active member of LDAS, enjoying bringing astronomy to the public.",
+      },
+    ],
+  },
+  connect: {
+    title: "Get in Touch",
+    description:
+      "Feel free to reach out if you have any questions about astronomy or astrophotography. You can also find me on Stargazers Lounge or drop me an",
+    email: {
+      text: "email",
+      href: "mailto:darren@darrenjehan.me.uk",
+    },
+  },
+};
+
+export const Automation2022Content = {
+  meta: {
+    title: "2022 Automation Project",
+    description: "About the original project to automate the observatory",
+  },
+  title: "The 2022 Automation Project",
+  description:
+    "",
+
+  image: {
+    src: "/assets/images/observatory/df.jpeg",
+    alt: "Dragonfly controller",
+  },
+  experience: {
+    title: "Hardware & Software Used",
     items: [
       {
         period: "Current",

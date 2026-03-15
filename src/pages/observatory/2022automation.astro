@@ -1,7 +1,7 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import { aboutContent } from "../config/content.ts";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { Automation2022Content } from "../../config/content.ts";
 ---
 
 <html lang="en">
@@ -10,8 +10,8 @@ import { aboutContent } from "../config/content.ts";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{aboutContent.meta.title}</title>
-    <meta name="description" content={aboutContent.meta.description} />
+    <title>{Automation2022Content.meta.title}</title>
+    <meta name="description" content={Automation2022Content.meta.description} />
     <script is:inline>
       (function () {
         const savedTheme = localStorage.getItem("theme") || "dark";
@@ -100,7 +100,7 @@ import { aboutContent } from "../config/content.ts";
           <h2
             class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl"
           >
-            {aboutContent.title}
+            {Automation2022Content.title}
           </h2>
           <div class="flex flex-col md:flex-row gap-8 mt-3 sm:mt-4 lg:mt-6">
             <div class="w-full md:w-1/2 flex flex-col">
@@ -127,7 +127,7 @@ import { aboutContent } from "../config/content.ts";
 
               <div class="mt-auto pt-4 flex flex-wrap gap-2">
                 {
-                aboutContent.skills.map((skill) => (
+                Automation2022Content.skills.map((skill) => (
                   <span class="px-3 py-2 text-md bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 rounded-full">
                     {skill}
                   </span>
@@ -138,8 +138,8 @@ import { aboutContent } from "../config/content.ts";
             <div class="w-full md:w-1/2 flex justify-end">
               <div class="relative w-[360px] h-[360px]">
                 <img
-                  src={aboutContent.image.src}
-                  alt={aboutContent.image.alt}
+                  src={Automation2022Content.image.src}
+                  alt={Automation2022Content.image.alt}
                   class="object-cover rounded-xl w-full h-full"
                 />
               </div>
@@ -150,11 +150,11 @@ import { aboutContent } from "../config/content.ts";
         <div class="flex flex-col md:flex-row mt-20">
           <div class="flex-1">
             <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
-              {aboutContent.experience.title}
+              {Automation2022Content.experience.title}
             </h2>
             <div class="py-10">
               {
-                aboutContent.experience.items.map((item) => (
+                Automation2022Content.experience.items.map((item) => (
                   <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
                     <div class="relative flex flex-col justify-start pl-12">
                       <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700">
