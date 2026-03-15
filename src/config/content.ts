@@ -1,122 +1,118 @@
 export const siteConfig = {
-  name: "Your Portfolio",
-  title: "Someone's Portfolio",
-  description: "A showcase of my work and thoughts",
+  name: "The Alan Norman Observatory",
+  title: "The Alan Norman Observatory",
+  description: "Exploits and adventures in astronomy from rural Bedfordshire",
   social: {
-    github: "https://github.com/tomcomtang/astro-multiplepage-portfolio",
-    twitter: "https://x.com/astrodotbuild",
-    email: "mailto:364786053@qq.com",
+    github: "",
+    twitter: "",
+    email: "mailto:darren@darrenjehan.me.uk",
   },
 };
 
 export const homeContent = {
-  title: "Hello, I'm Your Name",
+  title: "The Alan Norman Observatory",
   description:
-    "A passionate frontend developer with a keen eye for design and a love for creating beautiful, functional web experiences.",
+    "Exploits and adventures in astronomy from rural Bedfordshire. Astrophotography, observing reports and articles by Darren Jehan.",
   buttons: {
     about: {
-      text: "View About",
+      text: "The Observatory",
       href: "/about/",
     },
     posts: {
-      text: "Read Posts",
+      text: "Read the Blog",
       href: "/posts/",
     },
   },
   images: {
-    light: "https://multiplepage-portfolio.edgeone.app/assets/images/tech-background-light.svg",
+    light: "/assets/images/tech-background-light.svg",
     dark: "/assets/images/tech-background-dark.svg",
   },
 };
 
 export const aboutContent = {
   meta: {
-    title: "About - Your Portfolio",
-    description: "Learn more about my background, skills, and experience",
+    title: "The Observatory - The Alan Norman Observatory",
+    description: "About the Alan Norman Observatory and its equipment",
   },
-  title: "About Me",
+  title: "The Observatory",
   description:
-    "This is where you can introduce yourself or your company. Share your story, mission, and values. Explain what makes you unique and why people should be interested in your work. Keep it concise but engaging.",
+    "Based in rural Bedfordshire, the Alan Norman Observatory is a personal observatory dedicated to amateur astronomy and astrophotography.",
   skills: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Node.js",
-    "Docker",
-    "Git",
-    "AWS",
+    "Astrophotography",
+    "Visual Observing",
+    "Image Processing",
+    "Public Outreach",
   ],
   image: {
-    src: "/assets/images/about/coder.jpg",
-    alt: "Profile",
+    src: "/assets/images/about/observatory.jpg",
+    alt: "The Alan Norman Observatory",
   },
   experience: {
-    title: "Experience",
+    title: "Memberships & Involvement",
     items: [
       {
-        period: "2022 - Present",
-        position: "Senior Frontend Developer",
-        company: "Tencent Cloud",
+        period: "Current",
+        position: "Administrator",
+        company: "Stargazers Lounge",
         description:
-          "Leading frontend development for EdgeOne platform and templates.",
+          "One of the admin team on one of the world's largest amateur astronomy forums.",
       },
       {
-        period: "2020 - 2022",
-        position: "Frontend Developer",
-        company: "Tencent Cloud",
+        period: "Current",
+        position: "Active Member",
+        company: "Bedford Astronomical Society",
         description:
-          "Developed and maintained multiple web applications and tools.",
+          "Regular member and participant in outreach events and public observing sessions.",
       },
       {
-        period: "2018 - 2020",
-        position: "Junior Developer",
-        company: "Tencent Cloud",
-        description: "Worked on various client projects and internal tools.",
+        period: "Current",
+        position: "Active Member",
+        company: "Letchworth and District Astronomical Society",
+        description:
+          "Active member of LDAS, enjoying bringing astronomy to the public.",
       },
     ],
   },
   connect: {
-    title: "Let's Connect",
+    title: "Get in Touch",
     description:
-      "Feel free to reach out if you want to collaborate or just say hi! You can find us on social media or drop us an",
+      "Feel free to reach out if you have any questions about astronomy or astrophotography. You can also find me on Stargazers Lounge or drop me an",
     email: {
       text: "email",
-      href: "mailto:364786053@qq.com",
+      href: "mailto:darren@darrenjehan.me.uk",
     },
   },
 };
 
 export const projectsContent = {
   meta: {
-    title: "Projects - Your Portfolio",
-    description: "Showcase of my best work and projects",
+    title: "Images - The Alan Norman Observatory",
+    description: "Astrophotography images from the Alan Norman Observatory",
   },
-  title: "Our Projects",
+  title: "Astrophotography Images",
   description:
-    "Here you can showcase your best work. Each project should include a brief description, the technologies used, and any notable achievements. This helps potential clients or employers understand your capabilities.",
+    "A selection of astrophotography images captured from the Alan Norman Observatory in rural Bedfordshire.",
   projects: [
     {
-      title: "Project One",
+      title: "IC405 - Flaming Star Nebula",
       description:
-        "A brief description of your first project. Explain what it does and what technologies you used.",
-      image: "/assets/images/projects/project1.jpg",
+        "The Flaming Star Nebula in Auriga, captured in RGB.",
+      image: "/assets/images/projects/ic405.jpg",
       href: "#",
     },
     {
-      title: "Project Two",
+      title: "M31 - Andromeda Galaxy",
       description:
-        "Describe your second project here. Highlight the key features and your role in development.",
-      image: "/assets/images/projects/project2.jpg",
+        "Mosaic project imaging the Andromeda Galaxy.",
+      image: "/assets/images/projects/m31.jpg",
       href: "#",
     },
     {
-      title: "Project Three",
+      title: "M33 - Triangulum Galaxy",
       description:
-        "Share details about your third project. What problems did it solve? What was the outcome?",
-      image: "/assets/images/projects/project3.png",
+        "The Triangulum Galaxy captured in LRGB.",
+      image: "/assets/images/projects/m33.jpg",
       href: "#",
     },
   ],
 };
-
