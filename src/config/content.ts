@@ -11,8 +11,6 @@ export const siteConfig = {
 
 export const homeContent = {
   title: "The Alan Norman Observatory",
-  description:
-    "Exploits and adventures in astronomy from rural Bedfordshire. Astrophotography, observing reports and articles by Darren Jehan.",
   buttons: {
     about: {
       text: "The Observatory",
