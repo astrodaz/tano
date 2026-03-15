@@ -96,7 +96,12 @@ export const Automation2022Content = {
   title: "The 2022 Automation Project",
   description:
     "",
-
+  skills: [
+    "Dragonfly Controller",
+    "Gate Motor",
+    "Automation",
+    "Mains Power",
+  ],
   image: {
     src: "/assets/images/observatory/df.jpeg",
     alt: "Dragonfly controller",
