@@ -24,8 +24,8 @@ export const homeContent = {
     },
   },
   images: {
-    light: "/assets/images/tech-background-light.svg",
-    dark: "/assets/images/tech-background-dark.svg",
+    light: "/assets/images/IC405.png",
+    dark: "/assets/images/IC405.png",
   },
 };
 
