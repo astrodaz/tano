@@ -107,33 +107,52 @@ export const Automation2022Content = {
     alt: "Dragonfly controller",
   },
   experience: {
-    title: "Hardware & Software Used",
+    title: "Telescopes & Mounts",
     items: [
       {
-        period: "Current",
-        position: "Administrator",
-        company: "Stargazers Lounge",
+        type: "Telescope",
+        make: "Sky-Watcher Esprit ED Triplet",
+        fratio: "f/5.5",
+        aperture: "100mm",
         description:
-          "One of the admin team on one of the world's largest amateur astronomy forums.",
+          "The imaging workhorse in my set up. A triplet APO giving a mid0-range wide-field of view. Paired with the HEQ5, is great for travellig round the UK to dark sites and star-parties.",
       },
       {
-        period: "Current",
-        position: "Active Member",
-        company: "Bedford Astronomical Society",
+        type: "Telescope",
+        make: "GSO Ritchey Cretien",
+        fratio: "f/8",
+        aperture: "200mm",
         description:
-          "Regular member and participant in outreach events and public observing sessions.",
+          "This is based in the observatory, and despite being owned for close to 3 years, has not had much to do! It's paired with a ZWO ASI533MC Pro on an AZ-EQ6, and gives a great field of view for smaller targets.",
       },
       {
-        period: "Current",
-        position: "Active Member",
-        company: "Letchworth and District Astronomical Society",
+        type: "Telescope",
+        make: "Revelation Dobsonian",
+        fratio: "f/5",
+        aperture: "350mm",
         description:
-          "Active member of LDAS, enjoying bringing astronomy to the public.",
+          "The latest addition, so I can do some observing while the camera's do their bit!",
       },
+      {
+        type: "Mount",
+        make: "Sky-Watcher",
+        fratio: "AZ-EQ6",
+        aperture: "",
+        description:
+          "The observatory mount, currently working with thge RC8",
+      },      
+      {
+        type: "Mount",
+        make: "Sky-Watcher",
+        fratio: "HEQ5 Pro",
+        aperture: "",
+        description:
+          "This a great workhorse for going to star-parties and local dark sites. Upgraded with the Rowan belt-mod.",
+      },       
     ],
   },
   connect: {
-    title: "Get in Touch",
+    title: "Software",
     description:
       "Feel free to reach out if you have any questions about astronomy or astrophotography. You can also find me on Stargazers Lounge or drop me an",
     email: {
@@ -141,6 +160,22 @@ export const Automation2022Content = {
       href: "mailto:darren@darrenjehan.me.uk",
     },
   },
+
+    camera: {
+      title: "Cameras",
+      items: [
+        {
+          make: "ZWO",
+          model: "ASI 533MC Pro",
+          description: "Red and shiney",
+        },
+        {
+          make: "ZWO",
+          model: "ASI 2600MM",
+          description: "Black an white",
+        },
+      ],
+    },
 };
 
 export const projectsContent = {

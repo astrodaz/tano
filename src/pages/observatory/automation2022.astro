@@ -157,14 +157,17 @@ import { Automation2022Content } from "../../config/content.ts";
                         </svg>
                       </div>
                       <p class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest">
-                        {item.period}
+                        {item.type}
                       </p>
                       <h3 class="my-1 text-lg font-bold dark:text-neutral-100">
-                        {item.position}
+                        {item.make}
                       </h3>
-                      <p class="mb-1 text-sm font-medium dark:text-neutral-300">
-                        {item.company}
+                      <p class="mb-1 text-lg font-medium dark:text-neutral-100">
+                        {item.fratio}
                       </p>
+                      <p class="mb-1 text-lg font-medium dark:text-neutral-100">
+                        {item.aperture}
+                      </p>                      
                       <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
                         {item.description}
                       </p>
@@ -183,7 +186,11 @@ import { Automation2022Content } from "../../config/content.ts";
               <p
                 class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
               >
-                {Automation2022Content.connect.description}
+                <!-- {Automation2022Content.connect.description} -->
+                <ul class="text-lg dark:text-neutral-100">
+                  <li>ZWO</li>
+                  <li>Sky-Watcher</li>
+                </ul>
                 <a
                   href={Automation2022Content.connect.email.href}
                   class="text-indigo-600 underline"
@@ -193,7 +200,28 @@ import { Automation2022Content } from "../../config/content.ts";
                 .
               </p>
             </div>
-          </div>
+
+            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+              {Automation2022Content.camera.title}
+            </h2>
+            <div class="py-[30px]">
+              {Automation2022Content.camera.items.map((item) => (
+              <p
+                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+              >
+                <ul class="my-1 text-lg dark:text-neutral-100">
+                  <li>{item.make} - {item.model}</li>
+                </ul>
+                <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
+                {item.description}
+                </p>
+                
+              </p>
+              ))
+            }
+            </div>
+                        
+          </div>          
         </div>
       </section>
     </div>
