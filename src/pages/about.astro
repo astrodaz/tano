@@ -109,36 +109,7 @@ import { aboutContent } from "../config/content.ts";
               >
                 My observatory is named after my late father, and while I did not get into astronomy until after he passed away, I'm sure he would have enjoyed the wonders that the universe has to offer. So, my efforts in astro-photography are dedicated to him, mind you, he has a prime viewing spot from his hill in Yorkshire......
               </p>
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                Prior to 2020, I had embarked on a project to (finally) install power to the observatory and to implement automation to maximise the (rare) clear sky opportunities here in the UK. You can read about those exploits in the Old Projects section on the right.
-              </p>
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                2020 comes along and with the world in lockdown and unable to travel, we took the opportunity to get on and sort out the garden. This was always planned to be a patio - it's not the biggest garden in the world after all. To do that, the observatory had to be dismantled and rebuit. As part of that I took the opportunity to get rid of the roof entirely. As pat of the automation project, I was rebuiolding the roof anyway, so I thought this would spur me on! Well, to cut a long story short - it didn't quite work out that way, and I finished up building a new observatoyr from scratch! You can read about the rebuild and why here...
-              </p>
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                The new observatory build is now complete, and I now embark on a revised and new project to implement the automation.... I'd best get on with it!
-              </p>
-
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                <a href="/observatory/automation2022/">2022 Automation</a>
-              </p>              
-              <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                {
-                aboutContent.skills.map((skill) => (
-                  <span class="px-3 py-2 text-md bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 rounded-full">
-                    {skill}
-                  </span>
-                ))
-                }
-              </div>
+             
             </div>
             <div class="w-full md:w-1/2 flex justify-end">
               <div class="relative w-[360px] h-[360px]">
@@ -178,14 +149,14 @@ import { aboutContent } from "../config/content.ts";
                         </svg>
                       </div>
                       <p class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest">
-                        {item.period}
+                        {item.type}
                       </p>
                       <h3 class="my-1 text-lg font-bold dark:text-neutral-100">
-                        {item.position}
+                        {item.make}
                       </h3>
-                      <p class="mb-1 text-sm font-medium dark:text-neutral-300">
-                        {item.company}
-                      </p>
+                      <p class="my-1 text-lg font-bold dark:text-neutral-100">
+                        {item.aperture}, {item.fratio}
+                      </p>                      
                       <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
                         {item.description}
                       </p>
@@ -195,6 +166,48 @@ import { aboutContent } from "../config/content.ts";
               }
             </div>
           </div>
+
+          <div class="w-[360px] ml-8">
+            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+              {aboutContent.software.title}
+            </h2>
+
+            {
+              aboutContent.software.items.map((item) => (
+              <p
+                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+              >
+                <ul class="my-1 text-lg dark:text-neutral-100">
+                  <li>{item.name} - {item.description}</li>
+                </ul>
+              </p>
+              ))
+            }
+            
+            <div class="py-[30px]">
+            </div>
+
+            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+              {aboutContent.camera.title}
+            </h2>
+
+            {aboutContent.camera.items.map((item) => (
+              <p
+                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+              >
+                <ul class="my-1 text-lg dark:text-neutral-100">
+                  <li>{item.make} - {item.model}</li>
+                </ul>
+                <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
+                  {item.description}
+                </p>
+                
+              </p>
+              ))
+            }
+            </div>
+                        
+          </div>              
         </div>
       </section>
     </div>
