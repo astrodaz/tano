@@ -14,28 +14,15 @@ import { aboutContent } from "../config/content.ts";
     <meta name="description" content={aboutContent.meta.description} />
     <script is:inline>
       document.documentElement.classList.add("dark");
-    </script> 
+    </script>
     <style>
-      .dot-hexagon-light {
-        background-image: radial-gradient(
-            circle,
-            #80808045 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #80808045 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-
       .dot-hexagon-dark {
         background-image: radial-gradient(
             circle,
-            #ffffff35 1px,
+            #ffffff20 1px,
             transparent 1px
           ),
-          radial-gradient(circle, #ffffff35 1px, transparent 1px);
+          radial-gradient(circle, #ffffff20 1px, transparent 1px);
         background-size: 24px 41.57px;
         background-position:
           0 0,
@@ -44,40 +31,36 @@ import { aboutContent } from "../config/content.ts";
     </style>
   </head>
   <body
-    class="min-h-screen flex flex-col bg-white dark:bg-neutral-900 transition-colors duration-300"
+    class="min-h-screen flex flex-col bg-space-950 transition-colors duration-300"
   >
     <div class="relative flex-grow flex flex-col">
       <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 -z-10 dot-hexagon-dark"></div>
         <div
-          class="absolute inset-0 -z-10 dot-hexagon-light dark:dot-hexagon-dark"
+          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(8,8,16,0.5)_60%,rgba(8,8,16,0.9)_85%,rgb(8,8,16)_100%)] -z-10"
         >
         </div>
         <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)] -z-10"
-        >
-        </div>
-        <div
-          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]"
+          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-nebula-700 opacity-5 blur-[120px]"
         >
         </div>
       </div>
 
       <Navigation />
-      <section class="relative z-20 w-[896px] mx-auto mt-24 mb-12">
+      <section class="relative z-20 w-full max-w-7xl mx-auto mt-24 mb-12 px-4 sm:px-6 lg:px-8">
         <div class="relative z-20 w-full mx-auto lg:mx-0">
           <h2
-            class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl"
+            class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl"
           >
             {aboutContent.title}
           </h2>
           <div class="flex flex-col md:flex-row gap-8 mt-3 sm:mt-4 lg:mt-6">
             <div class="w-full md:w-1/2 flex flex-col">
               <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+                class="text-lg leading-8 text-starlight-400"
               >
                 My observatory is named after my late father, and while I did not get into astronomy until after he passed away, I'm sure he would have enjoyed the wonders that the universe has to offer. So, my efforts in astro-photography are dedicated to him, mind you, he has a prime viewing spot from his hill in Yorkshire......
               </p>
-             
             </div>
             <div class="w-full md:w-1/2 flex justify-end">
               <div class="relative w-[360px] h-[360px]">
@@ -91,19 +74,19 @@ import { aboutContent } from "../config/content.ts";
           </div>
         </div>
 
-        <div class="flex flex-col md:flex-row mt-20">
+        <div class="flex flex-col md:flex-row mt-20 gap-8">
           <div class="flex-1">
-            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
               {aboutContent.experience.title}
             </h2>
             <div class="py-10">
               {
                 aboutContent.experience.items.map((item) => (
-                  <div class="pb-10 border-l border-gray-200 last:border-l-0 dark:border-neutral-700">
+                  <div class="pb-10 border-l border-space-700 last:border-l-0">
                     <div class="relative flex flex-col justify-start pl-12">
-                      <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700">
+                      <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-space-950 border rounded-full w-14 h-14 border-space-700">
                         <svg
-                          class="w-8 h-8 text-neutral-700 dark:text-neutral-300"
+                          class="w-8 h-8 text-nebula-500"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -116,16 +99,16 @@ import { aboutContent } from "../config/content.ts";
                           />
                         </svg>
                       </div>
-                      <p class="text-xs uppercase text-neutral-400 dark:text-neutral-500 tracking-widest">
+                      <p class="text-xs uppercase text-starlight-400 tracking-widest">
                         {item.type}
                       </p>
-                      <h3 class="my-1 text-lg font-bold dark:text-neutral-100">
+                      <h3 class="my-1 text-lg font-bold text-starlight-100">
                         {item.make}
                       </h3>
-                      <p class="my-1 text-lg font-bold dark:text-neutral-100">
+                      <p class="my-1 text-lg font-bold text-starlight-100">
                         {item.aperture}, {item.fratio}
-                      </p>                      
-                      <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
+                      </p>
+                      <p class="text-sm font-light text-starlight-400">
                         {item.description}
                       </p>
                     </div>
@@ -135,47 +118,38 @@ import { aboutContent } from "../config/content.ts";
             </div>
           </div>
 
-          <div class="w-[360px] ml-8">
-            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+          <div class="w-[360px]">
+            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
               {aboutContent.software.title}
             </h2>
-
             {
               aboutContent.software.items.map((item) => (
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                <ul class="my-1 text-lg dark:text-neutral-100">
-                  <li>{item.name} - {item.description}</li>
+                <ul class="my-1">
+                  <li class="text-lg text-starlight-100">
+                    <span class="text-nebula-500">{item.name}</span> — {item.description}
+                  </li>
                 </ul>
-              </p>
               ))
             }
-            
-            <div class="py-[30px]">
-            </div>
 
-            <h2 class="mb-2 text-2xl font-bold dark:text-neutral-200">
+            <div class="py-6"></div>
+
+            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
               {aboutContent.camera.title}
             </h2>
-
-            {aboutContent.camera.items.map((item) => (
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                <ul class="my-1 text-lg dark:text-neutral-100">
-                  <li>{item.make} - {item.model}</li>
-                </ul>
-                <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
-                  {item.description}
-                </p>
-                
-              </p>
+            {
+              aboutContent.camera.items.map((item) => (
+                <div class="mb-4">
+                  <p class="text-lg text-starlight-100">
+                    <span class="text-nebula-500">{item.make}</span> — {item.model}
+                  </p>
+                  <p class="text-sm text-starlight-400">
+                    {item.description}
+                  </p>
+                </div>
               ))
             }
-            </div>
-                        
-          </div>              
+          </div>
         </div>
       </section>
     </div>
