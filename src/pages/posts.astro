@@ -19,39 +19,7 @@ const postsData = JSON.stringify(allPosts);
     <title>Blog Posts - Your Portfolio</title>
     <meta name="description" content="Read my latest blog posts and articles" />
     <script is:inline>
-      (function () {
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        const initialTheme =
-          savedTheme === "system"
-            ? prefersDark
-              ? "dark"
-              : "light"
-            : savedTheme;
-
-        if (initialTheme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      })();
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            if (localStorage.getItem("theme") === "system") {
-              if (e.matches) {
-                document.documentElement.classList.add("dark");
-              } else {
-                document.documentElement.classList.remove("dark");
-              }
-            }
-          });
-      });
+      document.documentElement.classList.add("dark");
     </script>
     <script define:vars={{ postsData, POSTS_PER_PAGE }}>
       document.addEventListener("DOMContentLoaded", function () {
