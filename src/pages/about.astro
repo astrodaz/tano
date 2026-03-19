@@ -151,9 +151,57 @@ import { aboutContent } from "../config/content.ts";
             }
           </div>
         </div>
+
+        <!-- Observatory Construction Gallery -->
+        <div class="mt-20">
+          <h2 class="mb-8 text-2xl font-bold text-starlight-200">
+            Construction Gallery
+          </h2>
+          <div class="grid grid-cols-3 gap-4">
+            {[
+              { src: "/assets/images/observatory/rebuild/3.jpg", caption: "Dismantle the old observatory" },
+              { src: "/assets/images/observatory/rebuild/4.jpg", caption: "Just the pier and base to go" },
+              { src: "/assets/images/observatory/rebuild/5.jpg", caption: "Ground cleared, ready for the new base" },
+              { src: "/assets/images/observatory/rebuild/8.jpg", caption: "New dwarf wall in, pier hole dug" },
+              { src: "/assets/images/observatory/rebuild/9.jpg", caption: "Pier block in" },
+              { src: "/assets/images/observatory/rebuild/10.jpg", caption: "Top layer of concrete in, and the cable piping" },
+              { src: "/assets/images/observatory/rebuild/13.jpg", caption: "Timber materials ready" },
+              { src: "/assets/images/observatory/rebuild/14.png", caption: "3D model of the new build" },
+              { src: "/assets/images/observatory/rebuild/15.jpg", caption: "The start of the framework" },
+              { src: "/assets/images/observatory/rebuild/16.jpg", caption: "End of day 1 and the bulk of the frame is done" },
+              { src: "/assets/images/observatory/rebuild/18.jpg", caption: "Frame finished, felt lining on" }, 
+              { src: "/assets/images/observatory/rebuild/20.jpg", caption: "Exterior cladding done" },
+              { src: "/assets/images/observatory/rebuild/24.jpg", caption: "Roof framework, checking the fit" },
+              { src: "/assets/images/observatory/rebuild/26.jpg", caption: "Roof tops done and felted" },
+              { src: "/assets/images/observatory/rebuild/27.jpg", caption: "Door built and installed - spot the mistake!" },
+              { src: "/assets/images/observatory/rebuild/28.jpg", caption: "Roof in the open position - note, no vertical supports" },
+              { src: "/assets/images/observatory/rebuild/31.jpg", caption: "Scope back in it's house!" },
+              { src: "/assets/images/observatory/rebuild/32.jpg", caption: "First light in the new observatory!" },
+
+            ].map((image) => (
+              <a href={image.src} class="glightbox" data-glightbox={`title: ${image.caption}`}>
+                <img
+                  src={image.src}
+                  alt={image.caption}
+                  class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
 
     <Footer />
   </body>
+  <script>
+  import GLightbox from 'glightbox';
+  import 'glightbox/dist/css/glightbox.css';
+  
+  const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: false,
+  });
+</script>
 </html>
