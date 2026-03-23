@@ -26,11 +26,70 @@
           class="text-lg text-starlight-200 hover:text-nebula-500 transition-colors"
           >Images</a>
         
-        <a href="/about/"
-          class="text-lg text-starlight-200 hover:text-nebula-500 transition-colors"
-          >The Observatory</a>
+        <!-- Observatory dropdown -->
+        <div class="relative group" id="observatory-menu">
+          <button
+            class="text-lg text-starlight-200 hover:text-nebula-500 transition-colors flex items-center gap-1"
+            id="observatory-toggle"
+          >
+            The Observatory
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div
+            class="absolute right-0 mt-2 w-56 rounded-xl border border-space-700 bg-space-900 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            id="observatory-dropdown"
+          >
+            <div class="py-2">
+              <a href="/about/"
+                class="block px-4 py-2 text-starlight-300 hover:text-nebula-500 hover:bg-space-800 transition-colors"
+                >The Observatory</a>
+              <div class="border-t border-space-700 my-1"></div>
+              <a href="/about/#gallery"
+                class="block px-4 py-2 text-starlight-300 hover:text-nebula-500 hover:bg-space-800 transition-colors"
+                >Construction Gallery</a>
+              <a href="/observatory/automation2022/"
+                class="block px-4 py-2 text-starlight-300 hover:text-nebula-500 hover:bg-space-800 transition-colors"
+                >2022 Automation Project</a>
+              <a href="/observatory/equipment/"
+                class="block px-4 py-2 text-starlight-300 hover:text-nebula-500 hover:bg-space-800 transition-colors"
+                >Equipment</a>
+              <a href="/observatory/original/"
+                class="block px-4 py-2 text-starlight-300 hover:text-nebula-500 hover:bg-space-800 transition-colors"
+                >Original Observatory</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 
+<script>
+  // Handle click toggle for mobile
+  const toggle = document.getElementById('observatory-toggle');
+  const dropdown = document.getElementById('observatory-dropdown');
+  const menu = document.getElementById('observatory-menu');
+
+  toggle.addEventListener('click', () => {
+    const isVisible = !dropdown.classList.contains('invisible');
+    if (isVisible) {
+      dropdown.classList.add('opacity-0', 'invisible');
+      dropdown.classList.remove('opacity-100', 'visible');
+    } else {
+      dropdown.classList.remove('opacity-0', 'invisible');
+      dropdown.classList.add('opacity-100', 'visible');
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target)) {
+      dropdown.classList.add('opacity-0', 'invisible');
+      dropdown.classList.remove('opacity-100', 'visible');
+    }
+  });
+</script>
