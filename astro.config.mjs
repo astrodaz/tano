@@ -17,5 +17,11 @@ export default defineConfig({
         'Cache-Control': 'no-cache, no-store, must-revalidate'
       }
     }
-  }
+  },
+  integrations: [tailwind()],
+    markdown: {
+      rehypePlugins: [
+        ['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+      ]
+    },  
 });

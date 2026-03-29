@@ -3,7 +3,7 @@ title: "Return of the RC..."
 description: "I knew this one would be back....  So a few years ago, I had a Ritchey Chretien (RC), and although I didn't get on with the particular model that I ha"
 date: "2022-08-23"
 readTime: "6 min read"
-image: "/assets/images/posts/default.jpg"
+image: "/assets/images/posts/tano_gso_RC8.jpg"
 slug: "return-of-the-rc"
 ---
 
