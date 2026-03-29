@@ -11,7 +11,7 @@ So, currently in North Norfolk, at the annual Autumn Star Camp - which I think i
 
 At the start of our stay (7th October) is was like June... warm sunshine, gentle breeze, shorts and t-shirts and plenty of ice cream. Great!
 
-On Wednesday, the weather won't up to the fact it was autumn and decided to give us the appropriate weather for the time of year. Cue the rain. Oh  and the wind.
+On Wednesday, the weather woke up to the fact it was autumn and decided to give us the appropriate weather for the time of year. Cue the rain. Oh  and the wind.
 
 And then more rain, coming down a bit harder. Then a bit harder. Then windier. Then really windy!
 
@@ -33,7 +33,7 @@ I feared the worst as Mrs Daz and i picked everything up and started to assess t
 
 I was sure it was going to be an expensive day!
 
-Well, after an afternoon of refitting and testing, it seems the only real damage was the broken flats panel. Everything else has gone back together and is working as it should - so much so rust is now 23:45 on the Friday night, and I'm imaging and guiding.
+Well, after an afternoon of refitting and testing, it seems the only real damage was the broken flats panel. Everything else has gone back together and is working as it should - so much so, it is now 23:45 on the Friday night, and I'm imaging and guiding.
 
 Star shaped are spot on, no sign of any misalignment of the elements in the objective, focus is spot on and the mount is tracking just fine...
 

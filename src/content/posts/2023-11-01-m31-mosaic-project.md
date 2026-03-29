@@ -3,8 +3,9 @@ title: "M31 Mosaic project"
 description: "Following on from the windy adventures in Norfolk at the Star Camp, I have started to preview the mosaic data I collected.  When I re-assembled the te"
 date: "2023-11-01"
 readTime: "1 min read"
-image: "/assets/images/posts/default.jpg"
+image: "/assets/images/posts/M31_Mosaic_web.png"
 slug: "m31-mosaic-project"
+tags: ["M31", "Andromeda", "mosaic"]
 ---
 
 
@@ -17,4 +18,6 @@ So, here is the result of putting the mosaic together, and you can clearly see t
 
 So far, so good though, and the tools and processes in NINA for figuring out the panel arrangement, and Pixinsight for aligning the panels, make the whole process really quite easy, The challenging part will be using tools like StarXterminator, DBE and NSG to get all the panels as flat as possible!
 
-[siteorigin\_widget class="SiteOrigin\_Widget\_Image\_Widget"][/siteorigin\_widget]
+<a href="/assets/images/posts/M31_Mosaic_web.png" class="glightbox" data-glightbox="title: M31 Mosaic showing the panels">
+  <img src="/assets/images/posts/M31_Mosaic_web.png" alt="M31 Mosaic showing the panels" class="w-full rounded-xl cursor-pointer hover:opacity-80 transition-opacity" />
+</a>

@@ -81,6 +81,7 @@ export function getPostBySlug(slug: string): {
     readTime?: string;
     image?: string;
     slug?: string;
+    tags?: string[];
   };
   Content: any;
   slug: string;

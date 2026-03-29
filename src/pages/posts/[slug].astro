@@ -39,7 +39,7 @@ if (!Content) {
     day: "numeric",
   }) : ""}
   readTime={frontmatter.readTime}
-  tags={frontmatter.tags}
+  tags={frontmatter.tags || []}
 >
 
   <!-- Blog sidebar -->
