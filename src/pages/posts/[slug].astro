@@ -1,6 +1,5 @@
 ---
-import Navigation from "../../components/Navigation.astro";
-import Footer from "../../components/Footer.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 import { getPostBySlug, getAllPostSlugs } from "../../utils/getPosts";
 
 export async function getStaticPaths() {
@@ -30,170 +29,108 @@ if (!Content) {
 }
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{frontmatter.title} - Your Portfolio</title>
-    <meta name="description" content={frontmatter.description} />
-    <script is:inline>
-      (function () {
-        const savedTheme = localStorage.getItem("theme") || "dark";
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        const initialTheme =
-          savedTheme === "system"
-            ? prefersDark
-              ? "dark"
-              : "light"
-            : savedTheme;
+<BlogLayout 
+  title={frontmatter.title || ""}
+  description={frontmatter.description}
+  date={frontmatter.date ? new Date(frontmatter.date).toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }) : ""}
+  readTime={frontmatter.readTime}
+>
 
-        if (initialTheme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      })();
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        window
-          .matchMedia("(prefers-color-scheme: dark)")
-          .addEventListener("change", (e) => {
-            if (localStorage.getItem("theme") === "system") {
-              if (e.matches) {
-                document.documentElement.classList.add("dark");
-              } else {
-                document.documentElement.classList.remove("dark");
-              }
-            }
-          });
-
-        const proseContainer = document.querySelector(".prose");
-        if (proseContainer) {
-          const firstH1 = proseContainer.querySelector("h1");
-          if (firstH1) {
-            firstH1.remove();
-          }
-        }
-      });
-    </script>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow-x: hidden;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      main {
-        flex: 1;
-      }
-      section[class*="text-gray-700"] {
-        margin: 0;
-        padding: 0;
-        flex-shrink: 0;
-      }
-      .prose h1:first-of-type,
-      .prose > h1:first-child,
-      article .prose h1:first-child {
-        display: none !important;
-      }
-
-      .dot-hexagon-light {
-        background-image: radial-gradient(
-            circle,
-            #80808045 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #80808045 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-
-      .dot-hexagon-dark {
-        background-image: radial-gradient(
-            circle,
-            #ffffff35 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #ffffff35 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-    </style>
-  </head>
-  <body class="bg-white dark:bg-neutral-900 transition-colors duration-300">
-    <div class="fixed inset-0 z-0 pointer-events-none">
-      <div
-        class="absolute inset-0 -z-10 dot-hexagon-light dark:dot-hexagon-dark"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)] -z-10"
-      >
-      </div>
-      <div
-        class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]"
-      >
-      </div>
+  <!-- Blog sidebar -->
+  <div slot="sidebar">
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Recent Posts</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/posts/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            All Posts
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <main class="flex-1 relative z-10">
-      <Navigation />
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Fellow Imagers</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="http://nightskyimages.co.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Steve Richards
+          </a>
+        </li>
+        <li>
+          <a href="http://www.digitalsky.org.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Pete Lawrence
+          </a>
+        </li>
+        <li>
+          <a href="http://www.astrobin.com/users/timjardine/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Tim Jardine
+          </a>
+        </li>
+        <li>
+          <a href="http://www.eagleseye.me.uk/Sky/Wordpress/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Dave Eagle
+          </a>
+        </li>
+      </ul>
+    </div>
 
-      <article class="relative z-20 w-[896px] mx-auto mt-24 mb-12 px-7 lg:px-0">
-        <header class="text-center">
-          <h1
-            class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl mb-1.5"
-          >
-            {frontmatter.title}
-          </h1>
-          <div
-            class="flex items-center justify-center gap-4 text-sm text-neutral-600 dark:text-neutral-400 mb-1.5"
-          >
-            <time datetime={frontmatter.date || ""}>
-              {
-                frontmatter.date
-                  ? new Date(frontmatter.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })
-                  : ""
-              }
-            </time>
-            <span>•</span>
-            <span>{frontmatter.readTime}</span>
-          </div>
-        </header>
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Astronomy Links</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="http://stargazerslounge.com" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Stargazers Lounge
+          </a>
+        </li>
+        <li>
+          <a href="http://bedsastro.org.uk" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Bedford AS
+          </a>
+        </li>
+        <li>
+          <a href="https://www.ldas.org.uk" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Letchworth & District AS
+          </a>
+        </li>
+        <li>
+          <a href="http://britastro.org" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            The BAA
+          </a>
+        </li>
+      </ul>
+    </div>
 
-        {
-          frontmatter.description && (
-            <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-16 text-center">
-              {frontmatter.description}
-            </p>
-          )
-        }
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Local Seeing</h3>
+      <a href="http://clearoutside.com/forecast/52.14/-0.47" target="_blank">
+        <img
+          src="http://clearoutside.com/forecast_image_small/52.14/-0.47/forecast.png"
+          alt="Clear Outside Forecast"
+          class="w-full rounded-lg"
+        />
+      </a>
+    </div>
+  </div>
 
-        <div class="prose prose-neutral dark:prose-invert max-w-none">
-          <Content />
-        </div>
-      </article>
-    </main>
+  <!-- Post content -->
+  <div class="prose prose-invert prose-lg max-w-none
+    prose-headings:text-starlight-100
+    prose-p:text-starlight-400
+    prose-a:text-nebula-500
+    prose-a:no-underline
+    hover:prose-a:text-nebula-300
+    prose-strong:text-starlight-200
+    prose-code:text-aurora-400
+    prose-blockquote:border-nebula-500
+    prose-blockquote:text-starlight-400
+    prose-li:text-starlight-400
+    prose-hr:border-space-700">
+    <Content />
+  </div>
 
-    <Footer />
-  </body>
-</html>
+</BlogLayout>
