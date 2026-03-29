@@ -13,13 +13,12 @@ Things have been busy - the details of which I won't bore you with, suffice to s
 
 So what's changed in TANO over the last year?
 
-Well, the Classic Cassegrain has gone to a new home, and as per the last post, I have (re) acquired a GSO 8 inch RC telescope which I am aiming to pair with my Atik One 6mp CCD. The pixel size on the Atik is 4.54 microns, so running it BIN2 (9.08microns) puts it slap bang in the green zone when paired wit the RC - even with a focal reducer, bringing it from f/8 to f/5.4, is still within the ideal range.
+Well, the Classic Cassegrain has gone to a new home, and as per the last post, I have (re) acquired a GSO 8 inch RC telescope which I am aiming to pair with my Atik One 6mp CCD. The pixel size on the Atik is 4.54 microns, so running it BIN2 (9.08microns) puts it slap bang in the green zone when paired with the RC - even with a focal reducer, bringing it from f/8 to f/5.4, is still within the ideal range.
 
 I'm also planning on coupling this to an external filter wheel - a 7-position Starlight Xpress, and a Lodestar for the guiding. This means I don't need to keep dismantling the camera to change from RGB to NB filters, and given the relatively small size of the CCD sensor (12 x 9mm), vignetting should not be an issue at all.
 
-The CCD had to off for a repair not to long ago, and I have not had a chance to connect everything together for testing - so that's a project for when I get back home. Of course, I'll document the project, and we'll see if it's a success!
+The CCD had to go off for a repair not to long ago, and I have not had a chance to connect everything together for testing - so that's a project for when I get back home. Of course, I'll document the project, and we'll see if it's a success!
 
-[siteorigin\_widget class="SiteOrigin\_Widget\_Image\_Widget"][/siteorigin\_widget]
 
 What else...
 

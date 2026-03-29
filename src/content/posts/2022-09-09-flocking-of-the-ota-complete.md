@@ -3,7 +3,7 @@ title: "Flocking of the OTA - Complete"
 description: "It's cloudy... again!  As I mentioned in the last post, the flocking in the OTA needed attention. In warm weather, it would lift off from the OTA and "
 date: "2022-09-09"
 readTime: "2 min read"
-image: "/assets/images/posts/default.jpg"
+image: "/assets/images/posts/rc_flocking_2_sm.jpg"
 slug: "flocking-of-the-ota-complete"
 ---
 
@@ -27,4 +27,24 @@ The mark on the secondary is aligned at exactly 3.5 turns from when the thread s
 
 The images below show the various stages of the work...
 
-[ngg src="galleries" ids="8" display="basic\_thumbnail" order\_by="alttext"]
+
+<div class="grid grid-cols-3 gap-4 my-8">
+  <a href="/assets/images/posts/rc_flocking_7.jpg" class="glightbox" data-glightbox="title: The original flocking, lifting away from the OTA">
+    <img src="/assets/images/posts/rc_flocking_7.jpg" alt="The original flocking, lifting away from the OTA" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>
+  <a href="/assets/images/posts/rc_flocking_2.jpg" class="glightbox" data-glightbox="title: Looking down from the focuser, showing the lifting at the far end">
+    <img src="/assets/images/posts/rc_flocking_2.jpg" alt="Looking down from the focuser, showing the lifting at the far end" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>
+  <a href="/assets/images/posts/rc_flocking_3.jpg" class="glightbox" data-glightbox="title: Secondary holder showing the alignment mark">
+    <img src="/assets/images/posts/rc_flocking_3.jpg" alt="Secondary holder showing the alignment mark" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>
+  <a href="/assets/images/posts/rc_flocking_4.jpg" class="glightbox" data-glightbox="title: Grooves on the secondary holder">
+    <img src="/assets/images/posts/rc_flocking_4.jpg" alt="Grooves on the secondary holder" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>
+  <a href="/assets/images/posts/rc_flocking_9.jpg" class="glightbox" data-glightbox="title: Old flocking stripped out">
+    <img src="/assets/images/posts/rc_flocking_9.jpg" alt="Old flocking stripped out" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>    
+  <a href="/assets/images/posts/rc_flocking_11.jpg" class="glightbox" data-glightbox="title: New flcoking now installed">
+    <img src="/assets/images/posts/rc_flocking_11.jpg" alt="New flcoking now installed" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+  </a>   
+</div>
