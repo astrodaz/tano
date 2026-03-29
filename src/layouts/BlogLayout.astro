@@ -6,9 +6,11 @@ interface Props {
   description?: string;
   date?: string;
   readTime?: string;
+  tags?: string[];
 }
 
-const { title, description, date, readTime } = Astro.props;
+const { title, description, date, readTime, tags } = Astro.props;
+
 ---
 
 <BaseLayout title={title} description={description}>
@@ -18,21 +20,30 @@ const { title, description, date, readTime } = Astro.props;
       <!-- Main content area -->
       <article class="flex-1 min-w-0">
         <!-- Post header -->
-        <header class="mb-8">
-          <h1 class="text-4xl font-bold text-starlight-100 sm:text-5xl">
-            {title}
-          </h1>
-          {(date || readTime) && (
-            <div class="flex gap-4 mt-4">
-              {date && (
-                <span class="text-starlight-400 text-sm">{date}</span>
-              )}
-              {readTime && (
-                <span class="text-aurora-500 text-sm">{readTime}</span>
-              )}
-            </div>
-          )}
-        </header>
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-starlight-100 sm:text-5xl">
+          {title}
+        </h1>
+        {(date || readTime) && (
+          <div class="flex gap-4 mt-4">
+            {date && (
+              <span class="text-starlight-400 text-sm">{date}</span>
+            )}
+            {readTime && (
+              <span class="text-aurora-500 text-sm">{readTime}</span>
+            )}
+          </div>
+        )}
+        {tags && tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {tags.map((tag) => (
+              <span class="px-3 py-1 text-xs font-medium text-nebula-500 border border-nebula-500 rounded-full">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
 
         <!-- Post content -->
         <div class="prose prose-invert prose-lg max-w-none

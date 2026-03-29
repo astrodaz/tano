@@ -6,6 +6,7 @@ const allMarkdownModules = import.meta.glob<{
     readTime?: string;
     image?: string;
     slug?: string;
+    tags?: string[];
   };
   default: any;
 }>('../content/posts/*.md', { eager: true });
@@ -18,6 +19,7 @@ export interface Post {
   image: string;
   slug: string;
   href: string;
+  tags: string[];
 }
 
 /**
@@ -54,6 +56,7 @@ export function getAllPosts(): Post[] {
       image: frontmatter.image || '/assets/images/posts/post1.jpg',
       slug: slug,
       href: `/posts/${slug}`,
+      tags: frontmatter.tags || [],
     });
   }
 
