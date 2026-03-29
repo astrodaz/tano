@@ -204,21 +204,21 @@ export const projectsContent = {
       title: "IC405 - Flaming Star Nebula",
       description:
         "The Flaming Star Nebula in Auriga, captured in RGB.",
-      image: "/assets/images/projects/ic405.jpg",
+      image: "/assets/images/projects/project1.jpg",
       href: "#",
     },
     {
       title: "M31 - Andromeda Galaxy",
       description:
         "Mosaic project imaging the Andromeda Galaxy.",
-      image: "/assets/images/projects/m31.jpg",
+      image: "/assets/images/projects/project2.jpg",
       href: "#",
     },
     {
       title: "M33 - Triangulum Galaxy",
       description:
         "The Triangulum Galaxy captured in LRGB.",
-      image: "/assets/images/projects/m33.jpg",
+      image: "/assets/images/projects/project3.png",
       href: "#",
     },
   ],
