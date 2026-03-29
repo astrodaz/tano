@@ -11,17 +11,19 @@ slug: "return-of-the-rc"
 
 So a few years ago, I had a Ritchey Chretien (RC), and although I didn't get on with the particular model that I had, I guessed at some point it would return for another spell at TANO!
 
-<div class="flex justify-center my-4>
-<a href="/assets/images/posts/tano_gso_RC8.jpg" class="glightbox" data-glightbox="title: The RC8 on the AZ-EQ6 mount">
-  <img src="/assets/images/posts/tano_gso_RC8.jpg" alt="The RC8 on the AZ-EQ6 mount" class="w-64 rounded-xl cursor-pointer hover:opacity-80 transition-opacity" />
-</a>
+<div class="flex justify-center my-4">
+  <a href="/assets/images/posts/tano_gso_RC8.jpg" class="glightbox" data-glightbox="title: The RC8 on the AZ-EQ6 mount, in the observatory">
+    <img src="/assets/images/posts/tano_gso_RC8.jpg" alt="The RC8 on the AZ-EQ6 mount, in the observatory" class="w-64 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity" />
+  </a>
 </div>
 
 The optical design of the RC is of two hyperbolic mirrors, designed to eliminate coma (off axis errors). Most of the world's research grade instruments are of an RC design - including Hubble! My one is manufactured by GSO. They make a lot of the amateur RC (as well as refractors and reflectors) under different brand names.
 
-<a href="/assets/images/posts/rc-optical.png" class="glightbox" data-glightbox="title: The RC Optical Design">
-  <img src="/assets/images/posts/rc-optical.png" alt="The RC Optical Design" class="w-64 h-48 rounded-xl cursor-pointer hover:opacity-80 transition-opacity" />
-</a>
+<div class="flex justify-center my-4">
+  <a href="/assets/images/posts/rc-optical.png" class="glightbox" data-glightbox="title: The Ritchey Cretian optical design">
+    <img src="/assets/images/posts/rc-optical.png" alt="The Ritchey Cretian optical design" class="w-64 h-48 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity" />
+  </a>
+</div>
 
 The mechanical design of this particular model is known to be.... challenging, shall we say, to get the collimation just right. The art of aligning the two mirrors is quite critical, especially with this particular optical design. Because of this, I was a little nervous about acquiring this scope. I mention I had one before - that was also a GSO scope. The issue is that the focuser, scope housing and mirror cell are all connected - they cannot be independently adjusted to give precise collimation.
 
@@ -53,7 +55,17 @@ David, the seller, kindly provided me with a whole raft of documentation on the 
 
 So, now, it is a waiting game - waiting for the clouds to clear so I can make the final set ups (focus training, guiding set up, etc.)
 
-[ngg src="galleries" ids="5" display="basic\_thumbnail"]
+<div class="grid grid-cols-3 gap-4 my-8">
+    <a href="/assets/images/posts/tano_gso_rc8_bhart.jpg" class="glightbox" data-glightbox="title: With the bartinov mask on, showing the perfect focus">
+        <img src="/assets/images/posts/tano_gso_rc8_bhart.jpg" alt="With the bartinov mask on, showing the perfect focus" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+    </a>
+    <a href="/assets/images/posts/tano_gso_rc8_defocus.jpg" class="glightbox" data-glightbox="title: Defocussed star showing the cental obstruction perfectly centered">
+        <img src="/assets/images/posts/tano_gso_rc8_defocus.jpg" alt="Defocussed star showing the cental obstruction perfectly centered" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+    </a>
+    <a href="/assets/images/posts/tano_gso_rc8_star_test.jpg" class="glightbox" data-glightbox="title: Focussed star showing excellent defraction spikes, excellent collimation!">
+        <img src="/assets/images/posts/tano_gso_rc8_star_test.jpg" alt="Focussed star showing excellent defraction spikes, excellent collimation!" class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer" />
+    </a>
+</div>
 
 ### While I wait...
 
