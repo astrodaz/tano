@@ -1,0 +1,59 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  readTime?: string;
+}
+
+const { title, description, date, readTime } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col lg:flex-row gap-12">
+
+      <!-- Main content area -->
+      <article class="flex-1 min-w-0">
+        <!-- Post header -->
+        <header class="mb-8">
+          <h1 class="text-4xl font-bold text-starlight-100 sm:text-5xl">
+            {title}
+          </h1>
+          {(date || readTime) && (
+            <div class="flex gap-4 mt-4">
+              {date && (
+                <span class="text-starlight-400 text-sm">{date}</span>
+              )}
+              {readTime && (
+                <span class="text-aurora-500 text-sm">{readTime}</span>
+              )}
+            </div>
+          )}
+        </header>
+
+        <!-- Post content -->
+        <div class="prose prose-invert prose-lg max-w-none
+          prose-headings:text-starlight-100
+          prose-p:text-starlight-400
+          prose-a:text-nebula-500
+          prose-a:no-underline
+          hover:prose-a:text-nebula-300
+          prose-strong:text-starlight-200
+          prose-code:text-aurora-400
+          prose-blockquote:border-nebula-500
+          prose-blockquote:text-starlight-400">
+          <slot />
+        </div>
+      </article>
+
+      <!-- Blog sidebar -->
+      <aside class="w-full lg:w-80 shrink-0">
+        <slot name="sidebar" />
+      </aside>
+
+    </div>
+  </div>
+</BaseLayout>
