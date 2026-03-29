@@ -1,108 +1,111 @@
 ---
-import Navigation from "../../components/Navigation.astro";
-import Footer from "../../components/Footer.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 import { Automation2022Content } from "../../config/content.ts";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{Automation2022Content.meta.title}</title>
-    <meta name="description" content={Automation2022Content.meta.description} />
-    <script is:inline>
-      document.documentElement.classList.add("dark");
-    </script>
-    <style>
-      .dot-hexagon-light {
-        background-image: radial-gradient(
-            circle,
-            #80808045 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #80808045 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
+<PageLayout title={Automation2022Content.meta.title} description={Automation2022Content.meta.description}>
 
-      .dot-hexagon-dark {
-        background-image: radial-gradient(
-            circle,
-            #ffffff35 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #ffffff35 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-    </style>
-  </head>
-  <body
-    class="min-h-screen flex flex-col bg-white dark:bg-neutral-900 transition-colors duration-300"
-  >
-    <div class="relative flex-grow flex flex-col">
-      <div class="absolute inset-0 z-0">
-        <div
-          class="absolute inset-0 -z-10 dot-hexagon-light dark:dot-hexagon-dark"
-        >
-        </div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(255,255,255,0.5)_60%,rgba(255,255,255,0.9)_85%,white_100%)] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(23,23,23,0.5)_60%,rgba(23,23,23,0.9)_85%,rgb(23,23,23)_100%)] -z-10"
-        >
-        </div>
-        <div
-          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-neutral-400 opacity-10 blur-[100px]"
-        >
-        </div>
-      </div>
-
-      <Navigation />
-      <section class="relative z-20 w-[896px] mx-auto mt-24 mb-12">
-        <div class="relative z-20 w-full mx-auto lg:mx-0">
-          <h2
-            class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-3xl lg:text-4xl"
-          >
-            {Automation2022Content.title}
-          </h2>
-          <div class="flex flex-col md:flex-row gap-8 mt-3 sm:mt-4 lg:mt-6">
-            <div class="w-full md:w-1/2 flex flex-col">
-              <p
-                class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
-              >
-                {Automation2022Content.description}
-              </p>
-              <div class="mt-auto pt-4 flex flex-wrap gap-2">
-                {
-                  Automation2022Content.skills.map((skill) => (
-                    <span class="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 rounded-full">
-                      {skill}
-                    </span>
-                  ))
-                }
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 flex justify-end">
-              <div class="relative w-[360px] h-[360px]">
-                <img
-                  src={Automation2022Content.image.src}
-                  alt={Automation2022Content.image.alt}
-                  class="object-cover rounded-xl w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      </section>
+  <!-- Sidebar -->
+  <div slot="sidebar">
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">The Observatory</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/about/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/about/#gallery" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Construction Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/automation2022/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            2022 Automation Project
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/equipment/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Equipment
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/original/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Original Observatory
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <Footer />
-  </body>
-</html>
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Fellow Imagers</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="http://nightskyimages.co.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Steve Richards
+          </a>
+        </li>
+        <li>
+          <a href="http://www.digitalsky.org.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Pete Lawrence
+          </a>
+        </li>
+        <li>
+          <a href="http://www.astrobin.com/users/timjardine/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Tim Jardine
+          </a>
+        </li>
+        <li>
+          <a href="http://www.eagleseye.me.uk/Sky/Wordpress/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Dave Eagle
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Local Seeing</h3>
+      <a href="http://clearoutside.com/forecast/52.14/-0.47" target="_blank">
+        <img
+          src="http://clearoutside.com/forecast_image_small/52.14/-0.47/forecast.png"
+          alt="Clear Outside Forecast"
+          class="w-full rounded-lg"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-20 w-full">
+    <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl">
+      {Automation2022Content.title}
+    </h2>
+    <div class="flex flex-col md:flex-row gap-8 mt-6">
+      <div class="w-full md:w-1/2 flex flex-col">
+        <p class="text-lg leading-8 text-starlight-400">
+          {Automation2022Content.description}
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            Automation2022Content.skills.map((skill) => (
+              <span class="px-3 py-1 text-sm bg-space-800 text-aurora-500 border border-space-700 rounded-full">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 flex justify-end">
+        <div class="relative w-[360px] h-[360px]">
+          <img
+            src={Automation2022Content.image.src}
+            alt={Automation2022Content.image.alt}
+            class="object-cover rounded-xl w-full h-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</PageLayout>
