@@ -1,207 +1,228 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import { aboutContent } from "../config/content.ts";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{aboutContent.meta.title}</title>
-    <meta name="description" content={aboutContent.meta.description} />
-    <script is:inline>
-      document.documentElement.classList.add("dark");
-    </script>
-    <style>
-      .dot-hexagon-dark {
-        background-image: radial-gradient(
-            circle,
-            #ffffff20 1px,
-            transparent 1px
-          ),
-          radial-gradient(circle, #ffffff20 1px, transparent 1px);
-        background-size: 24px 41.57px;
-        background-position:
-          0 0,
-          12px 20.78px;
-      }
-    </style>
-  </head>
-  <body
-    class="min-h-screen flex flex-col bg-space-950 transition-colors duration-300"
-  >
-    <div class="relative flex-grow flex flex-col">
-      <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 -z-10 dot-hexagon-dark"></div>
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_0%,rgba(8,8,16,0.5)_60%,rgba(8,8,16,0.9)_85%,rgb(8,8,16)_100%)] -z-10"
-        >
-        </div>
-        <div
-          class="absolute left-0 right-0 top-0 -z-10 m-auto h-[1200px] w-[1200px] rounded-full bg-nebula-700 opacity-5 blur-[120px]"
-        >
-        </div>
-      </div>
+<PageLayout title={aboutContent.meta.title} description={aboutContent.meta.description}>
 
-      <Navigation />
-      <section class="relative z-20 w-full max-w-7xl mx-auto mt-24 mb-12 px-4 sm:px-6 lg:px-8">
-        <div class="relative z-20 w-full mx-auto lg:mx-0">
-          <h2
-            class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl"
-          >
-            {aboutContent.title}
-          </h2>
-          <div class="flex flex-col md:flex-row gap-8 mt-3 sm:mt-4 lg:mt-6">
-            <div class="w-full md:w-1/2 flex flex-col">
-              <p
-                class="text-lg leading-8 text-starlight-400"
-              >
-                My observatory is named after my late father, and while I did not get into astronomy until after he passed away, I'm sure he would have enjoyed the wonders that the universe has to offer. So, my efforts in astro-photography are dedicated to him, mind you, he has a prime viewing spot from his hill in Yorkshire......
-              </p>
-            </div>
-            <div class="w-full md:w-1/2 flex justify-end">
-              <div class="relative w-[360px] h-[360px]">
-                <img
-                  src={aboutContent.image.src}
-                  alt={aboutContent.image.alt}
-                  class="object-cover rounded-xl w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row mt-20 gap-8">
-          <div class="flex-1">
-            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
-              {aboutContent.experience.title}
-            </h2>
-            <div class="py-10">
-              {
-                aboutContent.experience.items.map((item) => (
-                  <div class="pb-10 border-l border-space-700 last:border-l-0">
-                    <div class="relative flex flex-col justify-start pl-12">
-                      <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-space-950 border rounded-full w-14 h-14 border-space-700">
-                        <svg
-                          class="w-8 h-8 text-nebula-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                          />
-                        </svg>
-                      </div>
-                      <p class="text-xs uppercase text-starlight-400 tracking-widest">
-                        {item.type}
-                      </p>
-                      <h3 class="my-1 text-lg font-bold text-starlight-100">
-                        {item.make}
-                      </h3>
-                      <p class="my-1 text-lg font-bold text-starlight-100">
-                        {item.aperture}, {item.fratio}
-                      </p>
-                      <p class="text-sm font-light text-starlight-400">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-
-          <div class="w-[360px]">
-            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
-              {aboutContent.software.title}
-            </h2>
-            {
-              aboutContent.software.items.map((item) => (
-                <ul class="my-1">
-                  <li class="text-lg text-starlight-100">
-                    <span class="text-nebula-500">{item.name}</span> — {item.description}
-                  </li>
-                </ul>
-              ))
-            }
-
-            <div class="py-6"></div>
-
-            <h2 class="mb-2 text-2xl font-bold text-starlight-200">
-              {aboutContent.camera.title}
-            </h2>
-            {
-              aboutContent.camera.items.map((item) => (
-                <div class="mb-4">
-                  <p class="text-lg text-starlight-100">
-                    <span class="text-nebula-500">{item.make}</span> — {item.model}
-                  </p>
-                  <p class="text-sm text-starlight-400">
-                    {item.description}
-                  </p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-        <!-- Observatory Construction Gallery -->
-        <div class="mt-20" id="gallery">
-          <h2 class="mb-8 text-2xl font-bold text-starlight-200">
+  <!-- Sidebar -->
+  <div slot="sidebar">
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">The Observatory</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/about/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/about/#gallery" class="text-starlight-400 hover:text-nebula-500 transition-colors">
             Construction Gallery
-          </h2>
-          <div class="grid grid-cols-3 gap-4">
-            {[
-              { src: "/assets/images/observatory/rebuild/3.jpg", caption: "Dismantle the old observatory" },
-              { src: "/assets/images/observatory/rebuild/4.jpg", caption: "Just the pier and base to go" },
-              { src: "/assets/images/observatory/rebuild/5.jpg", caption: "Ground cleared, ready for the new base" },
-              { src: "/assets/images/observatory/rebuild/8.jpg", caption: "New dwarf wall in, pier hole dug" },
-              { src: "/assets/images/observatory/rebuild/9.jpg", caption: "Pier block in" },
-              { src: "/assets/images/observatory/rebuild/10.jpg", caption: "Top layer of concrete in, and the cable piping" },
-              { src: "/assets/images/observatory/rebuild/13.jpg", caption: "Timber materials ready" },
-              { src: "/assets/images/observatory/rebuild/14.png", caption: "3D model of the new build" },
-              { src: "/assets/images/observatory/rebuild/15.jpg", caption: "The start of the framework" },
-              { src: "/assets/images/observatory/rebuild/16.jpg", caption: "End of day 1 and the bulk of the frame is done" },
-              { src: "/assets/images/observatory/rebuild/18.jpg", caption: "Frame finished, felt lining on" }, 
-              { src: "/assets/images/observatory/rebuild/20.jpg", caption: "Exterior cladding done" },
-              { src: "/assets/images/observatory/rebuild/24.jpg", caption: "Roof framework, checking the fit" },
-              { src: "/assets/images/observatory/rebuild/26.jpg", caption: "Roof tops done and felted" },
-              { src: "/assets/images/observatory/rebuild/27.jpg", caption: "Door built and installed - spot the mistake!" },
-              { src: "/assets/images/observatory/rebuild/28.jpg", caption: "Roof in the open position - note, no vertical supports" },
-              { src: "/assets/images/observatory/rebuild/31.jpg", caption: "Scope back in it's house!" },
-              { src: "/assets/images/observatory/rebuild/32.jpg", caption: "First light in the new observatory!" },
-
-            ].map((image) => (
-              <a href={image.src} class="glightbox" data-glightbox={`title: ${image.caption}`}>
-                <img
-                  src={image.src}
-                  alt={image.caption}
-                  class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/automation2022/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            2022 Automation Project
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/equipment/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Equipment
+          </a>
+        </li>
+        <li>
+          <a href="/observatory/original/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Original Observatory
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <Footer />
-  </body>
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Fellow Imagers</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="http://nightskyimages.co.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Steve Richards
+          </a>
+        </li>
+        <li>
+          <a href="http://www.digitalsky.org.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Pete Lawrence
+          </a>
+        </li>
+        <li>
+          <a href="http://www.astrobin.com/users/timjardine/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Tim Jardine
+          </a>
+        </li>
+        <li>
+          <a href="http://www.eagleseye.me.uk/Sky/Wordpress/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Dave Eagle
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Local Seeing</h3>
+      <a href="http://clearoutside.com/forecast/52.14/-0.47" target="_blank">
+        <img
+          src="http://clearoutside.com/forecast_image_small/52.14/-0.47/forecast.png"
+          alt="Clear Outside Forecast"
+          class="w-full rounded-lg"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-20 w-full">
+    <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl">
+      {aboutContent.title}
+    </h2>
+    <div class="flex flex-col md:flex-row gap-8 mt-6">
+      <div class="w-full md:w-1/2 flex flex-col">
+        <p class="text-lg leading-8 text-starlight-400">
+          My observatory is named after my late father, and while I did not get into astronomy until after he passed away, I'm sure he would have enjoyed the wonders that the universe has to offer. So, my efforts in astro-photography are dedicated to him, mind you, he has a prime viewing spot from his hill in Yorkshire......
+        </p>
+      </div>
+      <div class="w-full md:w-1/2 flex justify-end">
+        <div class="relative w-[360px] h-[360px]">
+          <img
+            src={aboutContent.image.src}
+            alt={aboutContent.image.alt}
+            class="object-cover rounded-xl w-full h-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row mt-20 gap-8">
+    <div class="flex-1">
+      <h2 class="mb-2 text-2xl font-bold text-starlight-200">
+        {aboutContent.experience.title}
+      </h2>
+      <div class="py-10">
+        {
+          aboutContent.experience.items.map((item) => (
+            <div class="pb-10 border-l border-space-700 last:border-l-0">
+              <div class="relative flex flex-col justify-start pl-12">
+                <div class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-space-950 border rounded-full w-14 h-14 border-space-700">
+                  <svg
+                    class="w-8 h-8 text-nebula-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    />
+                  </svg>
+                </div>
+                <p class="text-xs uppercase text-starlight-400 tracking-widest">
+                  {item.type}
+                </p>
+                <h3 class="my-1 text-lg font-bold text-starlight-100">
+                  {item.make}
+                </h3>
+                <p class="my-1 text-lg font-bold text-starlight-100">
+                  {item.aperture}, {item.fratio}
+                </p>
+                <p class="text-sm font-light text-starlight-400">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="w-[360px]">
+      <h2 class="mb-2 text-2xl font-bold text-starlight-200">
+        {aboutContent.software.title}
+      </h2>
+      {
+        aboutContent.software.items.map((item) => (
+          <ul class="my-1">
+            <li class="text-lg text-starlight-100">
+              <span class="text-nebula-500">{item.name}</span> — {item.description}
+            </li>
+          </ul>
+        ))
+      }
+
+      <div class="py-6"></div>
+
+      <h2 class="mb-2 text-2xl font-bold text-starlight-200">
+        {aboutContent.camera.title}
+      </h2>
+      {
+        aboutContent.camera.items.map((item) => (
+          <div class="mb-4">
+            <p class="text-lg text-starlight-100">
+              <span class="text-nebula-500">{item.make}</span> — {item.model}
+            </p>
+            <p class="text-sm text-starlight-400">
+              {item.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Observatory Construction Gallery -->
+  <div class="mt-20" id="gallery">
+    <h2 class="mb-8 text-2xl font-bold text-starlight-200">
+      Construction Gallery
+    </h2>
+    <div class="grid grid-cols-3 gap-4">
+      {[
+        { src: "/assets/images/observatory/rebuild/3.jpg", caption: "Dismantle the old observatory" },
+        { src: "/assets/images/observatory/rebuild/4.jpg", caption: "Just the pier and base to go" },
+        { src: "/assets/images/observatory/rebuild/5.jpg", caption: "Ground cleared, ready for the new base" },
+        { src: "/assets/images/observatory/rebuild/8.jpg", caption: "New dwarf wall in, pier hole dug" },
+        { src: "/assets/images/observatory/rebuild/9.jpg", caption: "Pier block in" },
+        { src: "/assets/images/observatory/rebuild/10.jpg", caption: "Top layer of concrete in, and the cable piping" },
+        { src: "/assets/images/observatory/rebuild/13.jpg", caption: "Timber materials ready" },
+        { src: "/assets/images/observatory/rebuild/14.png", caption: "3D model of the new build" },
+        { src: "/assets/images/observatory/rebuild/15.jpg", caption: "The start of the framework" },
+        { src: "/assets/images/observatory/rebuild/16.jpg", caption: "End of day 1 and the bulk of the frame is done" },
+        { src: "/assets/images/observatory/rebuild/18.jpg", caption: "Frame finished, felt lining on" },
+        { src: "/assets/images/observatory/rebuild/20.jpg", caption: "Exterior cladding done" },
+        { src: "/assets/images/observatory/rebuild/24.jpg", caption: "Roof framework, checking the fit" },
+        { src: "/assets/images/observatory/rebuild/26.jpg", caption: "Roof tops done and felted" },
+        { src: "/assets/images/observatory/rebuild/27.jpg", caption: "Door built and installed - spot the mistake!" },
+        { src: "/assets/images/observatory/rebuild/28.jpg", caption: "Roof in the open position - note, no vertical supports" },
+        { src: "/assets/images/observatory/rebuild/31.jpg", caption: "Scope back in it's house!" },
+        { src: "/assets/images/observatory/rebuild/32.jpg", caption: "First light in the new observatory!" },
+      ].map((image) => (
+        <a href={image.src} class="glightbox" data-glightbox={`title: ${image.caption}`}>
+          <img
+            src={image.src}
+            alt={image.caption}
+            class="w-full h-48 object-cover rounded-xl hover:opacity-60 hover:scale-105 transition-all duration-300 cursor-pointer"
+          />
+        </a>
+      ))}
+    </div>
+  </div>
+
   <script>
-  import GLightbox from 'glightbox';
-  import 'glightbox/dist/css/glightbox.css';
-  
-  const lightbox = GLightbox({
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: false,
-  });
-</script>
-</html>
+    import GLightbox from 'glightbox';
+    import 'glightbox/dist/css/glightbox.css';
+    
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: false,
+    });
+  </script>
+
+</PageLayout>
