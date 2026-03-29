@@ -7,4 +7,5 @@ image: "/assets/images/posts/default.jpg"
 slug: "hello-world-2"
 ---
 
+
 Seems like an appropriate title for a new blog!

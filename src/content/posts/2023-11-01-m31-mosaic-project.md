@@ -7,6 +7,8 @@ image: "/assets/images/posts/default.jpg"
 slug: "m31-mosaic-project"
 ---
 
+
+
 Following on from the windy adventures in Norfolk at the Star Camp, I have started to preview the mosaic data I collected.
 
 When I re-assembled the telescope and checked everything was working, I forgot to check the camera angle had not moved - which of course it had!
