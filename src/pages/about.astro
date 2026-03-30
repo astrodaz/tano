@@ -153,8 +153,8 @@ import ObservatorySideBar from "../components/ObservatorySideBar.astro";
             <p class="text-xs uppercase text-starlight-400 tracking-widest">
               {item.description}
             </p>
-            <h3 class="my-1 text-lg font-bold text-starlight-100">
-              {item.model}
+            <h3 class="my-1 text-lg font-bold text-starlight-100 transition-all duration-300 hover:scale-105 hover:text-aurora-400 cursor-default inline-block origin-left">
+              <a href={item.image} class="glightbox">{item.model}</a>
             </h3>
             <p class="text-sm font-light text-starlight-400">
               {item.make}

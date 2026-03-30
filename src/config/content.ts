@@ -143,13 +143,15 @@ export const aboutContent = {
         make: "ZWO",
         model: "ASI 533MC Pro",
         description: "OSC paired with the RC",
-        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-533mc-pro-usb-30-cooled-colour-camera.html"
+        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-533mc-pro-usb-30-cooled-colour-camera.html",
+        image: "/assets/images/equipment/asi533mcpro.jpg"
       },
       {
         make: "ZWO",
         model: "ASI 2600MM",
         description: "Mono version, used with filters on the Esprit",
-        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-2600mm-p25-usb-30-cooled-mono-camera.html"
+        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-2600mm-p25-usb-30-cooled-mono-camera.html",
+        image: "/assets/images/equipment/asi2600mm.jpg"
       },
     ],
   },
