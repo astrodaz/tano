@@ -252,3 +252,25 @@ export const projectsContent = {
     },
   ],
 };
+
+export const imagerLinks = {
+  meta: {
+    title: "Imager Links",
+    description: "Links to fellow imagers",
+  },
+  title: "Astro Imagers",
+  imagers: [
+    {
+      name: "Pete Lawrence",
+      link: "https://digitalsky.org.uk/"
+    },
+    {
+      name: "Dave Eagle",
+      link: "https://www.star-gazing.co.uk/WebPage/"
+    },
+    {
+      name: "Tim Jardine",
+      link: "https://app.astrobin.com/u/timjardine"
+    },
+  ],
+};

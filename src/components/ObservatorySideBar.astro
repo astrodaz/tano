@@ -1,4 +1,5 @@
 ---
+import { imagerLinks } from "../config/content.ts";
 ---
 
 <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
@@ -15,41 +16,29 @@
       </a>
     </li>
     <li>
-      <a href="/observatory/automation2022/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-        2022 Automation Project
-      </a>
-    </li>
-    <li>
       <a href="/observatory/equipment/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
         Equipment
-      </a>
-    </li>
-    <li>
-      <a href="/observatory/original/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-        Original Observatory
       </a>
     </li>
   </ul>
 </div>
 
 <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
-  <h3 class="text-lg font-bold text-starlight-200 mb-4">Fellow Imagers</h3>
+  <h3 class="text-lg font-bold text-starlight-200 mb-4">{imagerLinks.title}</h3>
   <ul class="space-y-2">
-    <li>
-      <a href="http://www.digitalsky.org.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-        Pete Lawrence
-      </a>
-    </li>
-    <li>
-      <a href="http://www.astrobin.com/users/timjardine/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-        Tim Jardine
-      </a>
-    </li>
-    <li>
-      <a href="http://www.eagleseye.me.uk/Sky/Wordpress/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-        Dave Eagle
-      </a>
-    </li>
+    {
+      imagerLinks.imagers.map((item) => (
+        <li>
+          <a
+            href={item.link}
+            target="_blank"
+            class="text-starlight-400 hover:text-nebula-500 transition-colors"
+          >
+            {item.name}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </div>
 
