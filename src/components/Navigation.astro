@@ -68,7 +68,8 @@
   const dropdown = document.getElementById('observatory-dropdown');
   const menu = document.getElementById('observatory-menu');
 
-  toggle.addEventListener('click', () => {
+  toggle?.addEventListener('click', () => {
+  if (dropdown) {
     const isVisible = !dropdown.classList.contains('invisible');
     if (isVisible) {
       dropdown.classList.add('opacity-0', 'invisible');
@@ -77,11 +78,12 @@
       dropdown.classList.remove('opacity-0', 'invisible');
       dropdown.classList.add('opacity-100', 'visible');
     }
+  }
   });
 
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target)) {
+    if (menu && dropdown && !menu.contains(e.target as Node)) {
       dropdown.classList.add('opacity-0', 'invisible');
       dropdown.classList.remove('opacity-100', 'visible');
     }
