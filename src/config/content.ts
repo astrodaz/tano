@@ -33,6 +33,16 @@ export const homeContent = {
   ]
 };
 
+export const constructContent = {
+  meta: {
+    title: "The Observatory - Construction Gallery",
+    description: "About the Alan Norman Observatory and its equipment",
+  },
+  title: "Construction Gallery",
+  description:
+    "Based in rural Bedfordshire, the Alan Norman Observatory is a personal observatory dedicated to amateur astronomy and astrophotography.",
+};
+
 export const aboutContent = {
   meta: {
     title: "The Observatory - The Alan Norman Observatory",
@@ -50,6 +60,19 @@ export const aboutContent = {
   image: {
     src: "/assets/images/about/new_tano.jpg",
     alt: "The Alan Norman Observatory",
+  },
+  experience1: {
+    title: "Telescopes & Mounts",
+    items: [
+      {
+        type: "Telescope",
+        make: "Sky-Watcher Esprit ED Triplet",
+        fratio: "f/5.5",
+        aperture: "100mm",
+        description:
+          "The imaging workhorse in my set up. A triplet APO giving a mid0-range wide-field of view. Paired with the HEQ5, is great for travellig round the UK to dark sites and star-parties.",
+      }
+    ]    
   },
   experience: {
     title: "Telescopes & Mounts",
@@ -101,10 +124,12 @@ export const aboutContent = {
     items: [
       {
         name: "ASI Air",
+        author: "ZWO",
         description: "Acquisition, guiding, focusing"
       },
       {
         name: "Pixinsight",
+        author: "Pleiades Software",
         description: "Stacking, calibration, processing"
       },
     ]
@@ -115,12 +140,12 @@ export const aboutContent = {
       {
         make: "ZWO",
         model: "ASI 533MC Pro",
-        description: "Red and shiney",
+        description: "OSC paired with the RC",
       },
       {
         make: "ZWO",
         model: "ASI 2600MM",
-        description: "Black an white",
+        description: "Mono version, used with filters on the Esprit",
       },
     ],
   },
