@@ -123,14 +123,16 @@ export const aboutContent = {
     title: "Software",
     items: [
       {
-        name: "ASI Air",
+        name: "ASI Air Plus",
         author: "ZWO",
-        description: "Acquisition, guiding, focusing"
+        description: "Acquisition, guiding, focusing",
+        link: "https://www.firstlightoptics.com/zwo-accessories/zwo-asiair-plus-256g-wireless-astrophotography-controller.html"
       },
       {
         name: "Pixinsight",
-        author: "Pleiades Software",
-        description: "Stacking, calibration, processing"
+        author: "Pleiades Astrophoto S.L.",
+        description: "Stacking, calibration, processing",
+        link: "https://pixinsight.com/"
       },
     ]
   },
@@ -141,11 +143,13 @@ export const aboutContent = {
         make: "ZWO",
         model: "ASI 533MC Pro",
         description: "OSC paired with the RC",
+        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-533mc-pro-usb-30-cooled-colour-camera.html"
       },
       {
         make: "ZWO",
         model: "ASI 2600MM",
         description: "Mono version, used with filters on the Esprit",
+        link: "https://www.firstlightoptics.com/zwo-cameras/zwo-asi-2600mm-p25-usb-30-cooled-mono-camera.html"
       },
     ],
   },
