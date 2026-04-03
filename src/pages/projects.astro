@@ -102,6 +102,7 @@ import { projectsContent } from "../config/projects.ts";
                 href={item.image}
                 class="glightbox group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
                 data-glightbox={`title: ${item.title}`}
+                data-gallery={section.header.replace(/\s+/g, '-').toLowerCase()}
               >
                 <div class="overflow-hidden">
                   <img
