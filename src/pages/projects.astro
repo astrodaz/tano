@@ -1,6 +1,7 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
-import { projectsContent } from "../config/content.ts";
+import { projectsContent } from "../config/projects.ts";
+import { solarSystemContent } from "../config/projects.ts";
 ---
 
 <PageLayout title={projectsContent.meta.title} description={projectsContent.meta.description}>
@@ -80,33 +81,41 @@ import { projectsContent } from "../config/content.ts";
       {projectsContent.description}
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mt-10">
       {
-        projectsContent.projects.map((project) => (
-          <a
-            href={project.image}
-            class="glightbox group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
-            data-glightbox={`title: ${project.title}`}
-          >
-            <div class="overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+        projectsContent.sections.map((section) => (
+          <section>
+            <h3 class="mb-8 text-3xl font-bold text-starlight-200">
+              {section.header}
+            </h3>
+            <div class="grid grid-cols-4">
+              {section.items.map((item) => (
+                <a
+                  href={item.image}
+                  class="mb-4 glightbox group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
+                  data-glightbox={`title: ${item.title}`}>
+                  <div class="overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <h3 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p class="mt-1 text-sm text-starlight-400">
+                      {item.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
             </div>
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
-                {project.title}
-              </h3>
-              <p class="mt-1 text-sm text-starlight-400">
-                {project.description}
-              </p>
-            </div>
-          </a>
+          </section>
         ))
       }
-    </div>
+          
   </div>
 
   <script>
