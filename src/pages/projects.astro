@@ -1,7 +1,6 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import { projectsContent } from "../config/projects.ts";
-import { solarSystemContent } from "../config/projects.ts";
 ---
 
 <PageLayout title={projectsContent.meta.title} description={projectsContent.meta.description}>
@@ -82,39 +81,49 @@ import { solarSystemContent } from "../config/projects.ts";
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mt-10">
-      {
-        projectsContent.sections.map((section) => (
-          <section>
-            <h3 class="mb-8 text-3xl font-bold text-starlight-200">
+    {
+      projectsContent.sections.map((section) => (
+        <details class="mb-12" >
+          <summary class="flex cursor-pointer items-center justify-between list-none">
+            <h3 class="text-3xl font-bold text-starlight-200 hover:text-nebula-500 transition-colors">
               {section.header}
             </h3>
-            <div class="grid grid-cols-4">
-              {section.items.map((item) => (
-                <a
-                  href={item.image}
-                  class="mb-4 glightbox group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
-                  data-glightbox={`title: ${item.title}`}>
-                  <div class="overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div class="p-4">
-                    <h3 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p class="mt-1 text-sm text-starlight-400">
-                      {item.description}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+            {/* The "Twisty" Icon */}
+            <span class="ml-4 transition-transform duration-300 group-open:rotate-180 text-starlight-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </span>
+          </summary>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+            {section.items.map((item) => (
+              <a
+                href={item.image}
+                class="glightbox group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
+                data-glightbox={`title: ${item.title}`}
+              >
+                <div class="overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+                    {item.title}
+                  </h4>
+                  <p class="mt-1 text-sm text-starlight-400">
+                    {item.description}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </details>
+      ))
+    }
           
   </div>
 
@@ -128,5 +137,13 @@ import { solarSystemContent } from "../config/projects.ts";
       autoplayVideos: false,
     });
   </script>
-
+<style>
+  /* Removes the default arrow in Chrome/Safari/Firefox */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+  }
+</style>
 </PageLayout>
