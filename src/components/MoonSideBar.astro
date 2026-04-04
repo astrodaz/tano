@@ -1,0 +1,53 @@
+---
+import { getMoonAge, getMoonPhaseName } from '../utils/moon';
+
+const today = new Date();
+const moonAge = getMoonAge(today);
+const phaseName = getMoonPhaseName(moonAge);
+
+// 0 = New, 14 = Full, 28 = New
+const illumination = Math.round((1 - Math.abs(moonAge - 14) / 14) * 100);
+
+// Logic tied to your specific theme colors
+let advice = "Perfect for Deep Sky!";
+let colorClass = "text-aurora-400"; // Hot green for good conditions
+let barClass = "bg-aurora-500";
+
+if (illumination > 40) { 
+  advice = "Try some Narrowband."; 
+  colorClass = "text-nebula-300"; // Light orange
+  barClass = "bg-nebula-400";
+}
+if (illumination > 75) { 
+  advice = "Optics cleaning night?"; 
+  colorClass = "text-nebula-500"; // Bright orange
+  barClass = "bg-nebula-500";
+}
+---
+<div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+  <div class="flex justify-between items-start mb-4">
+    <h3 class="text-lg font-bold text-starlight-200 mb-4">
+      Moon Phase
+    </h3>
+    <span class={`text-[12px] font-mono font-bold ${colorClass} bg-space-950 px-2 py-0.5 rounded border border-current/20`}>
+      {illumination}% Illuminated
+    </span>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="text-4xl drop-shadow-[0_0_10px_rgba(245,245,240,0.2)]">
+      {moonAge === 0 ? '🌑' : moonAge < 7 ? '🌒' : moonAge < 14 ? '🌓' : moonAge < 21 ? '🌔' : '🌕'}
+    </div>
+    <div>
+      <p class="text-starlight-100 font-semibold leading-tight">{phaseName}</p>
+      <p class={`text-xs mt-1 font-medium ${colorClass} opacity-90`}>{advice}</p>
+    </div>
+  </div>
+  
+  <div class="mt-5 w-full bg-space-800 h-1.5 rounded-full overflow-hidden border border-space-700">
+    <div 
+      class={`h-full ${barClass} transition-all duration-1000 shadow-[0_0_8px_rgba(0,0,0,0.5)]`} 
+      style={`width: ${illumination}%`}
+    ></div>
+  </div>
+</div>

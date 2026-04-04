@@ -6,10 +6,10 @@ export default {
       colors: {
         // Main background colours
         space: {
-          950: '#080810',
-          900: '#0d0d1a',
-          800: '#12122a',
-          700: '#1a1a3a',
+          950: '#12121f',
+          900: '#1a1a2e',
+          800: '#252545',
+          700: '#32325a',
         },
         // Orange accent colours
         nebula: {
