@@ -1,6 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig, homeContent } from "../config/content.ts";
+import { getCollection } from 'astro:content';
+// 1. Fetch all posts from the 'posts' collection
+const allPosts = await getCollection('posts');
+
+// 2. Sort them by date (Newest first)
+// This assumes you have a 'pubDate' field in your post markdown frontmatter
+const latestPost = allPosts.sort((a, b) => 
+  b.data.date.valueOf() - a.data.date.valueOf()
+)[0];
+console.log("Found posts:", allPosts.length);
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
@@ -64,6 +74,25 @@ import { siteConfig, homeContent } from "../config/content.ts";
             ></a
           >
         </div>
+
+          <div class="flex flex-row gap-4 mt-6">
+          <section class="mt-12 p-6 bg-space-900 border border-space-700 rounded-2xl">
+            <span class="text-aurora-500 font-bold uppercase tracking-widest text-xl">Latest from the Observatory</span>
+
+            <h3 class="text-3xl font-bold text-starlight-100 mt-2">
+              {latestPost.data.title}
+            </h3>
+
+            <p class="text-starlight-400 mt-4 line-clamp-3">
+              {latestPost.data.description}
+            </p>
+
+            <a href={`/posts/${latestPost.id}/`} class="inline-block mt-6 text-nebula-400 hover:text-nebula-300 font-semibold transition-colors">
+            Read the full post →
+            </a>
+          </section>
+          </div>
+
       </div>
 
       <div
