@@ -1,5 +1,5 @@
 ---
-import logoImage from '../ass';
+import logoImage from '../assets/images/tano-logo_w.png';
 import { Image } from 'astro:assets';
 ---
 
@@ -8,8 +8,7 @@ import { Image } from 'astro:assets';
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-24">
       <a href="/" class="flex items-center gap-3">
-        <img
-          <Image.src={logoImage}
+        <Image src={logoImage}
           alt="The Alan Norman Observatory"
           class="h-20 w-auto"
         />
@@ -23,9 +22,9 @@ import { Image } from 'astro:assets';
           class="text-lg text-starlight-200 hover:text-nebula-500 transition-colors"
           >Blog</a>
         
-        <a href="/projects/"
+        <a href="/gallery/"
           class="text-lg text-starlight-200 hover:text-nebula-500 transition-colors"
-          >Images</a>
+          >Gallery</a>
         
         <!-- Observatory dropdown -->
         <div class="relative group" id="observatory-menu">
