@@ -10,7 +10,6 @@ const allPosts = await getCollection('posts');
 const latestPost = allPosts.sort((a, b) => 
   b.data.date.valueOf() - a.data.date.valueOf()
 )[0];
-console.log("Found posts:", allPosts.length);
 ---
 
 <BaseLayout title={siteConfig.title} description={siteConfig.description}>
