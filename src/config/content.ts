@@ -22,8 +22,8 @@ export const homeContent = {
     },
   },
   images: {
-    light: "/assets/images/projects/IC405.png",
-    dark: "/assets/images/projects/IC405.png",
+    light: "../assets/images/gallery/ic405.png",
+    dark: "../assets/images/gallery/ic405.png",
   },
   skills: [
     "Astrophotography",
@@ -58,7 +58,7 @@ export const aboutContent = {
     "Public Outreach",
   ],
   image: {
-    src: "/assets/images/about/new_tano.jpg",
+    src: "../../assets/images/about/new_tano.jpg",
     alt: "The Alan Norman Observatory",
   },
 }
