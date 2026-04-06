@@ -1,3 +1,6 @@
+import homeImage from "../assets/images/ic405.png";
+import tanoImage from "../assets/images/new_tano.jpg"
+
 export const siteConfig = {
   name: "The Alan Norman Observatory",
   title: "The Alan Norman Observatory",
@@ -22,8 +25,7 @@ export const homeContent = {
     },
   },
   images: {
-    light: "assets/images/gallery/ic405.png",
-    dark: "../assets/images/gallery/ic405.png",
+    dark: homeImage
   },
   skills: [
     "Astrophotography",
@@ -58,7 +60,7 @@ export const aboutContent = {
     "Public Outreach",
   ],
   image: {
-    src: "assets/images/about/new_tano.jpg",
+    src: tanoImage,
     alt: "The Alan Norman Observatory",
   },
 }
@@ -78,7 +80,7 @@ export const Automation2022Content = {
     "Mains Power",
   ],
   image: {
-    src: "/assets/images/observatory/df.jpeg",
+    src: "../assets/images/observatory/df.jpeg",
     alt: "Dragonfly controller",
   },
   experience: {
