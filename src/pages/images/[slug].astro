@@ -1,6 +1,6 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import { getImageBySlug, getAllImageSlugs, calculateTotalIntegration } from "../../utils/getImages";
+import { getImageBySlug, getAllImageSlugs } from "../../utils/getImages";
 
 export async function getStaticPaths() {
   const slugs = getAllImageSlugs();
@@ -102,8 +102,14 @@ const totalIntegrationStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
         )}
         {frontmatter.moonIllumination !== undefined && (
           <div class="flex justify-between">
-            <dt class="text-starlight-400 text-sm">Moon</dt>
+            <dt class="text-starlight-400 text-sm">Moon Illumination</dt>
             <dd class="text-starlight-100 text-sm font-medium">{frontmatter.moonIllumination}%</dd>
+          </div>
+        )}
+        {frontmatter.moonAltitude !== undefined && (
+          <div class="flex justify-between">
+            <dt class="text-starlight-400 text-sm">Moon Altitude</dt>
+            <dd class="text-starlight-100 text-sm font-medium">{frontmatter.moonAltitude}%</dd>
           </div>
         )}
       </dl>
