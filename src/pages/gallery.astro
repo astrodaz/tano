@@ -1,0 +1,97 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { getAllImages } from "../utils/getImages";
+
+const images = getAllImages();
+---
+
+<PageLayout title="Image Gallery" description="Astrophotography images from the Alan Norman Observatory">
+
+  <!-- Sidebar -->
+  <div slot="sidebar">
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Gallery</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/gallery/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            All Images
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6">
+      <h3 class="text-lg font-bold text-starlight-200 mb-4">Resources</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="http://firstlightoptics.com" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            First Light Optics
+          </a>
+        </li>
+        <li>
+          <a href="http://adamblockstudios.com" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            Adam Block Studios
+          </a>
+        </li>
+        <li>
+          <a href="http://pixinsight.com" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            PixInsight
+          </a>
+        </li>
+        <li>
+          <a href="http://britastro.org" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
+            The BAA
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-20 w-full">
+    <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl mb-4">
+      Image Gallery
+    </h2>
+    <p class="text-lg text-starlight-400 mb-10">
+      Astrophotography images captured from the Alan Norman Observatory in rural Bedfordshire.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {images.map((image) => (
+        <a
+          href={image.href}
+          class="group relative flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
+        >
+          <div class="overflow-hidden">
+            <img
+              src={image.thumbnail || image.image}
+              alt={image.title}
+              class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+              {image.title}
+            </h3>
+            <p class="mt-1 text-sm text-starlight-400">
+              {image.type} · {image.constellation}
+            </p>
+            <p class="mt-1 text-sm text-aurora-500">
+              {image.totalIntegration} total integration
+            </p>
+            {image.tags && image.tags.length > 0 && (
+              <div class="flex flex-wrap gap-1 mt-3">
+                {image.tags.map((tag) => (
+                  <span class="px-2 py-0.5 text-xs text-nebula-500 border border-nebula-500 rounded-full">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+</PageLayout>

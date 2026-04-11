@@ -70,7 +70,7 @@ export const Automation2022Content = {
     "Mains Power",
   ],
   image: {
-    src: "../assets/images/observatory/df.jpeg",
+    src: "/assets/images/observatory/df.jpeg",
     alt: "Dragonfly controller",
   },
   experience: {

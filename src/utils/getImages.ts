@@ -26,7 +26,7 @@ const allImageModules = import.meta.glob<{
     tags?: string[];
   };
   default: any;
-}>('../content/images/*.md', { eager: true });
+}>('../content/gallery/*.md', { eager: true });
 
 export interface ImagePost {
   title: string;
