@@ -1,6 +1,8 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
 import { getImageBySlug, getAllImageSlugs } from "../../utils/getImages";
+import { getMoonPhaseForDate } from "../../utils/moon";
+
 
 export async function getStaticPaths() {
   const slugs = getAllImageSlugs();
@@ -9,19 +11,35 @@ export async function getStaticPaths() {
   }));
 }
 
+
 const { slug } = Astro.params;
+console.log('slug:', slug);
+
+const image = getImageBySlug(slug);
+console.log('image found:', image ? 'yes' : 'no');
+console.log('dates:', image?.frontmatter?.dates);
 
 if (!slug) {
   return Astro.redirect("/projects/");
 }
-
-const image = getImageBySlug(slug);
 
 if (!image) {
   return Astro.redirect("/projects/");
 }
 
 const { frontmatter, Content } = image;
+
+const moonData = (frontmatter.dates || []).map((dateStr) => ({
+  date: new Date(dateStr).toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }),
+  ...getMoonPhaseForDate(dateStr),
+}));
+console.log('moonData:', moonData);
+console.log('Dates:', frontmatter.dates);
+
 
 const filters = frontmatter.filters || [];
 const totalIntegration = filters.reduce((total, filter) => {
@@ -68,20 +86,6 @@ const totalIntegrationStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
     <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
       <h3 class="text-lg font-bold text-starlight-200 mb-4">Conditions</h3>
       <dl class="space-y-2">
-        {frontmatter.dates && frontmatter.dates.length > 0 && (
-          <div class="flex justify-between">
-            <dt class="text-starlight-400 text-sm">Date(s)</dt>
-            <dd class="text-starlight-100 text-sm font-medium text-right">
-              {frontmatter.dates.map((date) => (
-                <div>{new Date(date).toLocaleDateString("en-GB", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}</div>
-              ))}
-            </dd>
-          </div>
-        )}
         {frontmatter.location && (
           <div class="flex justify-between">
             <dt class="text-starlight-400 text-sm">Location</dt>
@@ -100,13 +104,31 @@ const totalIntegrationStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
             <dd class="text-starlight-100 text-sm font-medium">{frontmatter.temperature}</dd>
           </div>
         )}
-        {frontmatter.moonIllumination !== undefined && (
-          <div class="flex justify-between">
-            <dt class="text-starlight-400 text-sm">Moon</dt>
-            <dd class="text-starlight-100 text-sm font-medium">{frontmatter.moonIllumination}%</dd>
-          </div>
-        )}
       </dl>
+
+      <!-- Moon table -->
+      {moonData.length > 0 && (
+        <div class="mt-4">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-space-700">
+                <th class="text-left text-starlight-400 pb-2">Date</th>
+                <th class="text-right text-starlight-400 pb-2">Moon</th>
+                <th class="text-right text-starlight-400 pb-2">Phase</th>
+              </tr>
+            </thead>
+            <tbody>
+              {moonData.map((night) => (
+                <tr class="border-b border-space-700 last:border-0">
+                  <td class="text-starlight-100 py-2">{night.date}</td>
+                  <td class="text-aurora-500 text-right py-2">{night.illumination}%</td>
+                  <td class="text-starlight-400 text-right py-2 text-xs">{night.phase}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
 
     <!-- Equipment -->

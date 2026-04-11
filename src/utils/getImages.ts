@@ -8,8 +8,6 @@ const allImageModules = import.meta.glob<{
     bortle?: number;
     temperature?: string;
     location?: string;
-    moonIllumination?: number;
-    moonAltitude? :number;
     telescope?: string;
     mount?: string;
     camera?: string;
@@ -37,8 +35,6 @@ export interface ImagePost {
   bortle: number;
   temperature: string;
   location: string;
-  moonIllumination: number;
-  moonAltitude: number;
   telescope: string;
   mount: string;
   camera: string;
@@ -122,8 +118,6 @@ export function getAllImages(): ImagePost[] {
       bortle: frontmatter.bortle || 0,
       temperature: frontmatter.temperature || '',
       location: frontmatter.location || '',
-      moonIllumination: frontmatter.moonIllumination || 0,
-      moonAltitude: frontmatter.moonAltitude || 0,
       telescope: frontmatter.telescope || '',
       mount: frontmatter.mount || '',
       camera: frontmatter.camera || '',
@@ -133,7 +127,7 @@ export function getAllImages(): ImagePost[] {
       thumbnail: frontmatter.thumbnail || frontmatter.image || '',
       slug: slug,
       tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
-      href: `/images/${slug}`,
+      href: `/gallery/${slug}`,
       totalIntegration: calculateTotalIntegration(filters),
     });
   }
@@ -161,8 +155,6 @@ export function getImageBySlug(slug: string): {
     bortle?: number;
     temperature?: string;
     location?: string;
-    moonIllumination?: number;
-    moonAltitude?: number;
     telescope?: string;
     mount?: string;
     camera?: string;

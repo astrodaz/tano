@@ -74,3 +74,23 @@ export const getMoonPhaseName = (age: number): string => {
 
   return phase;
 };
+
+export const getMoonIllumination = (date: Date = new Date()): number => {
+  const age = getMoonAge(date);
+  const illumination = (1 - Math.cos((age / 28) * 2 * Math.PI)) / 2;
+  return Math.round(illumination * 100);
+};
+
+export const getMoonPhaseForDate = (dateStr: string): {
+  age: number;
+  phase: string;
+  illumination: number;
+  } => {
+  const date = new Date(dateStr);
+  const age = getMoonAge(date);
+  return {
+    age,
+    phase: getMoonPhaseName(age),
+    illumination: getMoonIllumination(date),
+  };
+};
