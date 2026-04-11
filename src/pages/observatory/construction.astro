@@ -1,10 +1,9 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import { constructContent } from "../../config/content.ts";
 import ObservatorySideBar from "../../components/ObservatorySideBar.astro";
 ---
 
-<PageLayout title={constructContent.meta.title} description={constructContent.meta.description}>
+<PageLayout title="The Observatory - Construction Gallery" description="Images showing the construction of the">
 
   <!-- Sidebar -->
   <div slot="sidebar">
@@ -15,7 +14,7 @@ import ObservatorySideBar from "../../components/ObservatorySideBar.astro";
   <!-- Main content -->
   <div class="relative z-20 w-full">
     <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl">
-      {constructContent.title}
+      onstruction Gallery
     </h2>
     <div class="flex flex-col md:flex-row gap-8 mt-6">
       <div class="w-full md:w-1/2 flex flex-col">

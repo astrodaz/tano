@@ -35,16 +35,6 @@ export const homeContent = {
   ]
 };
 
-export const constructContent = {
-  meta: {
-    title: "The Observatory - Construction Gallery",
-    description: "About the Alan Norman Observatory and its equipment",
-  },
-  title: "Construction Gallery",
-  description:
-    "Based in rural Bedfordshire, the Alan Norman Observatory is a personal observatory dedicated to amateur astronomy and astrophotography.",
-};
-
 export const aboutContent = {
   meta: {
     title: "The Observatory - The Alan Norman Observatory",
