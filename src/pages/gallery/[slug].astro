@@ -106,12 +106,6 @@ const totalIntegrationStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
             <dd class="text-starlight-100 text-sm font-medium">{frontmatter.moonIllumination}%</dd>
           </div>
         )}
-        {frontmatter.moonAltitude !== undefined && (
-          <div class="flex justify-between">
-            <dt class="text-starlight-400 text-sm">Moon</dt>
-            <dd class="text-starlight-100 text-sm font-medium">{frontmatter.moonAltitude}°</dd>
-          </div>
-        )}
       </dl>
     </div>
 
