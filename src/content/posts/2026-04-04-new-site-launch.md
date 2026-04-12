@@ -2,10 +2,11 @@
 title: "New website launch"
 description: "Having not touched the site for the last 2 years, I thought it about time"
 date: "2026-04-04"
+category: "News"
 readTime: "1 min read"
 image: "/assets/images/posts/default.jpg"
 slug: "new-web-site"
-tags: ["Andromeda"]
+tags: []
 ---
 
 Having not touched the site for the last 2 years, I thought it about time that I should update it!
