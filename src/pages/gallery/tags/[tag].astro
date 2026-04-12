@@ -1,12 +1,31 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
-import { getAllImages } from "../utils/getImages";
-import GallerySideBar from "../components/GallerySideBar.astro";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import { getAllImages } from "../../../utils/getImages";
+import GallerySideBar from "../../../components/GallerySideBar.astro";
 
-const images = getAllImages();
+export async function getStaticPaths() {
+  const images = getAllImages();
+  
+  // Get all unique tags
+  const tags = new Set<string>();
+  images.forEach((image) => {
+    (image.tags || []).forEach((tag) => tags.add(tag));
+  });
+
+  // Generate a page for each tag
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      images: images.filter((image) => image.tags?.includes(tag)),
+    },
+  }));
+}
+
+const { tag, images } = Astro.props;
 ---
 
-<PageLayout title="Image Gallery" description="Astrophotography images from the Alan Norman Observatory">
+<PageLayout title={`Images tagged: #${tag}`} description={`All images tagged with #${tag}`}>
 
   <!-- Sidebar -->
   <div slot="sidebar">
@@ -16,10 +35,10 @@ const images = getAllImages();
   <!-- Main content -->
   <div class="relative z-20 w-full">
     <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl mb-4">
-      Image Gallery
+      #{tag}
     </h2>
     <p class="text-lg text-starlight-400 mb-10">
-      
+      {images.length} {images.length === 1 ? 'image' : 'images'} tagged with <span class="text-nebula-500">#{tag}</span>
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -47,9 +66,9 @@ const images = getAllImages();
             </p>
             {image.tags && image.tags.length > 0 && (
               <div class="flex flex-wrap gap-1 mt-3">
-                {image.tags.map((tag) => (
+                {image.tags.map((t) => (
                   <span class="px-2 py-0.5 text-xs text-nebula-500 border border-nebula-500 rounded-full">
-                    #{tag}
+                    #{t}
                   </span>
                 ))}
               </div>
