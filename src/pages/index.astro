@@ -78,31 +78,28 @@ const latestPost = allPosts.sort((a, b) =>
 
           <div class="flex flex-row gap-4 mt-6">
           <section class="mt-12 p-6 bg-space-900 border border-space-700 rounded-2xl">
-            <span class="text-aurora-500 font-bold uppercase tracking-widest text-xl">Latest from the Observatory</span>
+              <span class="text-aurora-500 font-bold uppercase tracking-widest text-xl">Latest from the Observatory</span>
 
-            <h3 class="text-3xl font-bold text-starlight-100 mt-2">
-              {latestPost.data.title}
-            </h3>
+              <h3 class="text-3xl font-bold text-starlight-100 mt-2">
+                {latestPost.data.title}
+              </h3>
 
-            <p class="text-starlight-400 mt-4 line-clamp-3">
-              {latestPost.data.description}
-            </p>
+              <p class="text-starlight-400 mt-4 line-clamp-3">
+                {latestPost.data.description}
+              </p>
 
-            <a href={`/posts/${latestPost.id}/`} class="inline-block mt-6 text-nebula-400 hover:text-nebula-300 font-semibold transition-colors">
-            Read the full post →
-            </a>
-          </section>
+              <a href={`/posts/${latestPost.id}/`} class="inline-block mt-6 text-nebula-400 hover:text-nebula-300 font-semibold transition-colors">
+              Read the full post →
+              </a>
+            </section>
           </div>
 
       </div>
 
-      <div
-        class="relative w-[45%] flex items-center justify-center bg-transparent overflow-hidden z-20"
-      >
+      <div class="relative w-[45%] flex items-center justify-center bg-transparent overflow-hidden z-20">
         <div
           class="relative overflow-hidden"
-          style="width: min(700px, 45vw); height: min(700px, 70vh); max-width: 100%; max-height: 70vh;"
-        >
+          style="width: min(700px, 45vw); height: min(700px, 70vh); max-width: 100%; max-height: 70vh;">
           <Image
             src={homeContent.images.dark}
             alt="Astrophotography"

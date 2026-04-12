@@ -13,11 +13,8 @@ export async function getStaticPaths() {
 
 
 const { slug } = Astro.params;
-console.log('slug:', slug);
 
 const image = getImageBySlug(slug);
-console.log('image found:', image ? 'yes' : 'no');
-console.log('dates:', image?.frontmatter?.dates);
 
 if (!slug) {
   return Astro.redirect("/projects/");
@@ -37,8 +34,6 @@ const moonData = (frontmatter.dates || []).map((dateStr) => ({
   }),
   ...getMoonPhaseForDate(dateStr),
 }));
-console.log('moonData:', moonData);
-console.log('Dates:', frontmatter.dates);
 
 
 const filters = frontmatter.filters || [];
@@ -50,6 +45,7 @@ const totalIntegration = filters.reduce((total, filter) => {
 const hours = Math.floor(totalIntegration / 3600);
 const minutes = Math.floor((totalIntegration % 3600) / 60);
 const totalIntegrationStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
+
 ---
 
 <PageLayout title={frontmatter.title || ""}>

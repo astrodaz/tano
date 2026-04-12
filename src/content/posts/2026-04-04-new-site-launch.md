@@ -24,4 +24,4 @@ Once the roof is finally done, this will be revisied, but for now, it's wotking 
 The other main news is the AtikOne CCD has been replaced with an AS2600MM Pro with filter wheel and off axis-guiding on the Esprit. This is a great field of view that I am still getting to grips with, but will be amazing on some of the larger targets.
 
 ## New images?
-Well, not quite. Plenty of tests and there a couple that I have done that I need to upload... I'll get round to it!
+Well, yes, actually! I am building a <a href="/gallery/" title="Visit the Gallery">gallery</a> on the site - and there is a first image in there! First one in a long time, but there we are...
