@@ -1,0 +1,175 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+import BlogSidebar from "../../components/BlogSidebar.astro";
+import { getAllPosts } from "../../utils/getPosts";
+
+export async function getStaticPaths() {
+  const posts = getAllPosts();
+  
+  // Get all unique tags
+  const tags = new Set<string>();
+  posts.forEach((post) => {
+    (post.tags || []).forEach((tag) => tags.add(tag));
+  });
+
+  // Generate a page for each tag
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter((post) => post.tags?.includes(tag)),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const postsData = JSON.stringify(posts);
+const POSTS_PER_PAGE = 5;
+---
+
+<PageLayout title={`Posts tagged: #${tag}`} description={`All posts tagged with #${tag}`}>
+
+  <!-- Sidebar -->
+  <div slot="sidebar">
+    <BlogSidebar />
+  </div>
+
+  <!-- Main content -->
+  <div class="relative z-20 w-full">
+    <h2 class="text-5xl font-bold tracking-tight text-starlight-100 sm:text-6xl mb-4">
+      #{tag}
+    </h2>
+    <p class="text-lg text-starlight-400 mb-10">
+      {posts.length} {posts.length === 1 ? 'post' : 'posts'} tagged with <span class="text-nebula-500">#{tag}</span>
+    </p>
+
+    <div id="posts-container" class="flex flex-col items-stretch w-full gap-8"></div>
+    <div id="pagination-container"></div>
+  </div>
+
+  <script define:vars={{ postsData, POSTS_PER_PAGE }}>
+    document.addEventListener("DOMContentLoaded", function () {
+      const allPosts = JSON.parse(postsData);
+      const postsPerPage = POSTS_PER_PAGE;
+      const totalPosts = allPosts.length;
+      const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+      function getCurrentPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get("page");
+        return page ? parseInt(page, 10) : 1;
+      }
+
+      function getPageUrl(page) {
+        if (page === 1) return window.location.pathname + "/";
+        return `${window.location.pathname}/?page=${page}`;
+      }
+
+      function renderPosts(page) {
+        const currentPage = Math.max(1, Math.min(page, totalPages));
+        const startIndex = (currentPage - 1) * postsPerPage;
+        const endIndex = startIndex + postsPerPage;
+        const postsToShow = allPosts.slice(startIndex, endIndex);
+
+        const postsContainer = document.getElementById("posts-container");
+        if (!postsContainer) return;
+
+        postsContainer.innerHTML = postsToShow.map((post) => `
+          <a href="${post.href}">
+            <div class="relative cursor-pointer p-6 group rounded-2xl border border-space-700 bg-space-900 hover:border-nebula-500 transition-all duration-300">
+              <div class="flex gap-8">
+                <div class="flex-[2]">
+                  <h2 class="relative mb-3 pr-6">
+                    <span class="text-xl font-bold leading-tight tracking-tight text-starlight-100 group-hover:text-nebula-500 transition-colors">
+                      ${post.title}
+                    </span>
+                  </h2>
+                  <p class="text-base text-starlight-400 mb-3">
+                    ${post.description}
+                  </p>
+                  <div class="flex items-center gap-4 text-sm font-medium text-starlight-400">
+                    <span>${post.date}</span>
+                    <span>•</span>
+                    <span class="flex items-center gap-1 text-aurora-500">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      ${post.readTime}
+                    </span>
+                  </div>
+                </div>
+                <div class="relative flex-1 h-48 rounded-xl overflow-hidden flex-shrink-0">
+                  <img
+                    src="${post.image}"
+                    alt="${post.title}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+          </a>
+        `).join("");
+      }
+
+      function renderPagination(page) {
+        const currentPage = Math.max(1, Math.min(page, totalPages));
+        const paginationContainer = document.getElementById("pagination-container");
+        if (!paginationContainer) return;
+
+        if (totalPages <= 1) {
+          paginationContainer.innerHTML = "";
+          return;
+        }
+
+        let paginationHTML = '<div class="flex justify-center items-center gap-2 mt-8">';
+
+        if (currentPage > 1) {
+          paginationHTML += `
+            <a href="${getPageUrl(currentPage - 1)}"
+              class="px-3 py-1 text-sm font-medium text-starlight-400 hover:text-nebula-500 transition-colors">
+              Previous
+            </a>`;
+        } else {
+          paginationHTML += `
+            <span class="px-3 py-1 text-sm font-medium text-starlight-400 opacity-50 cursor-not-allowed">
+              Previous
+            </span>`;
+        }
+
+        for (let i = 1; i <= totalPages; i++) {
+          const isCurrentPage = i === currentPage;
+          paginationHTML += `
+            <a href="${getPageUrl(i)}"
+              class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium transition-colors ${
+                isCurrentPage
+                  ? "bg-nebula-500 text-space-950"
+                  : "text-starlight-400 hover:text-nebula-500"
+              }">
+              ${i}
+            </a>`;
+        }
+
+        if (currentPage < totalPages) {
+          paginationHTML += `
+            <a href="${getPageUrl(currentPage + 1)}"
+              class="px-3 py-1 text-sm font-medium text-starlight-400 hover:text-nebula-500 transition-colors">
+              Next
+            </a>`;
+        } else {
+          paginationHTML += `
+            <span class="px-3 py-1 text-sm font-medium text-starlight-400 opacity-50 cursor-not-allowed">
+              Next
+            </span>`;
+        }
+
+        paginationHTML += "</div>";
+        paginationContainer.innerHTML = paginationHTML;
+      }
+
+      const currentPage = getCurrentPage();
+      renderPosts(currentPage);
+      renderPagination(currentPage);
+    });
+  </script>
+
+</PageLayout>
