@@ -6,7 +6,7 @@ category: "News"
 readTime: "1 min read"
 image: "/assets/images/posts/default.jpg"
 slug: "new-web-site"
-tags: []
+tags: ["tag1", "tag2"]
 ---
 
 Having not touched the site for the last 2 years, I thought it about time that I should update it!
