@@ -5,6 +5,7 @@ date: "2023-10-13"
 readTime: "2 min read"
 image: "/assets/images/posts/default.jpg"
 slug: "an-interesting-day"
+tags: ["Andromeda"]
 ---
 
 So, currently in North Norfolk, at the annual Autumn Star Camp - which I think is the biggest star camp in the UK - and the weather has been 'interesting'!

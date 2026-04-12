@@ -5,6 +5,7 @@ date: "2023-10-11"
 readTime: "2 min read"
 image: "/assets/images/posts/default.jpg"
 slug: "time-for-the-annual-post"
+tags: ["Andromeda"]
 ---
 
 Currently sitting in a damp field in North Norfolk - yep, it's Star Party time here in the UK - and realised it has been (yet again) over a year since I last updated my own website...
