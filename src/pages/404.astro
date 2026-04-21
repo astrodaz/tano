@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 - Page Not Found">
+  <div class="flex-1 flex items-center justify-center py-24">
+    <div class="text-center px-4">
+      
+      <!-- Big 404 -->
+      <p class="text-9xl font-bold text-space-700">404</p>
+      
+      <!-- Star icon -->
+      <p class="text-6xl my-6">🔭</p>
+      
+      <!-- Message -->
+      <h1 class="text-4xl font-bold text-starlight-100 mb-4">
+        Lost in Space!
+      </h1>
+      <p class="text-lg text-starlight-400 mb-8 max-w-md mx-auto">
+        The page you're looking for has drifted beyond the observable universe. 
+        Perhaps it was captured by a black hole...
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        
+          href="/"
+          class="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-space-950 bg-nebula-500 rounded-lg hover:bg-nebula-400 transition-all duration-300 hover:scale-105"
+        >
+          Back to Home
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+        
+          href="/gallery/"
+          class="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-starlight-200 border border-aurora-500 rounded-lg hover:bg-aurora-500 hover:text-space-950 transition-all duration-300 hover:scale-105"
+        >
+          View Gallery
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Clear Outside widget -->
+      <div class="mt-12">
+        <p class="text-starlight-400 text-sm mb-4">
+          While you're here — check if it's clear outside! 🌙
+        </p>
+        <div class="flex justify-center">
+          <a href="http://clearoutside.com/forecast/52.14/-0.47" target="_blank">
+            <img
+              src="http://clearoutside.com/forecast_image_small/52.14/-0.47/forecast.png"
+              alt="Clear Outside Forecast"
+              class="rounded-lg opacity-90 hover:opacity-100 transition-opacity"
+            />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
