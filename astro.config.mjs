@@ -18,10 +18,9 @@ export default defineConfig({
       }
     }
   },
-  integrations: [tailwind()],
-    markdown: {
-      rehypePlugins: [
-        ['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }]
-      ]
-    },  
+  markdown: {
+    rehypePlugins: [
+      ['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+    ]
+  },
 });
