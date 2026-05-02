@@ -1,31 +1,73 @@
 ---
 import { siteConfig } from "../config/content";
+
+const now = new Date();
+const year = now.getFullYear();
+const month = String(now.getMonth() + 1).padStart(2, '0');
 ---
+
+
+
 
 <!-- Footer Component -->
 <footer class="relative border-t border-space-700 mt-12">
-  <div class="container mx-auto px-4 max-w-7xl py-8">
+  <div class="grid grid-cols-5 items-center gap-4 mb-6 max-w-6xl mx-auto px-4 py-4">
 
-    <!-- Clear Outside widget -->
-    <div class="flex justify-center mb-6">
+    <!-- Left thumbnails -->
+    <div class="flex flex-col items-center gap-1">
+      <a href={`/assets/images/charts/moon_calendar_${year}_${month}.png`} class="glightbox" data-glightbox="title: A moon phase calendar for the current month and year">
+        <img
+          src={`/assets/images/charts/moon_calendar_${year}_${month}.png`}
+          alt="Moon Phase Calendar"
+          class="rounded-lg opacity-90 hover:opacity-60 hover:scale-110 transition-opacity w-full h-24 object-contain"
+        />
+      </a>
+      <span class="text-starlight-400 text-xs">Moon Phases</span>
+    </div>
+
+    <div class="flex flex-col items-center gap-1">
+      <a href={`/assets/images/charts/moon_full_${year}_${month}.png`} class="glightbox" data-glightbox="title: A chart showing lunar altitude over the month, for the current month and year">
+        <img
+          src={`/assets/images/charts/moon_full_${year}_${month}.png`}
+          alt="Moon Visibility Chart"
+          class="rounded-lg opacity-90 hover:opacity-60 hover:scale-110 transition-opacity w-full h-24 object-contain"        />
+      </a>
+      <span class="text-starlight-400 text-xs">Monthly Moon Chart</span>
+    </div>
+
+    <!-- Centre - Clear Outside -->
+    <div class="flex justify-center">
       <a href="https://clearoutside.com/forecast/52.14/-0.46" target="_blank">
         <img
           src="https://clearoutside.com/forecast_image_medium/52.14/-0.46/forecast.png"
           alt="Clear Outside Weather Forecast"
-          class="rounded-lg opacity-90 hover:opacity-100 transition-opacity"
+          class="rounded-lg opacity-90 hover:opacity-60 hover:scale-105 transition-opacity"
         />
       </a>
     </div>
 
-    <!-- Bottom row - copyright and credits -->
-    <div class="flex justify-center">
-      <p class="text-sm text-starlight-400 text-center">
-        © {new Date().getFullYear()} Darren Jehan. All rights reserved. · Built with 
-        <a href="https://astro.build" target="_blank" class="text-nebula-500 hover:text-nebula-300 transition-colors">Astro</a> 
-        and 
-        <a href="https://tailwindcss.com" target="_blank" class="text-nebula-500 hover:text-nebula-300 transition-colors">Tailwind CSS</a>
-      </p>
+    <!-- Right thumbnails -->
+    <div class="flex flex-col items-center gap-1">
+      <a href={`/assets/images/charts/planets_${year}_${month}.png`} class="glightbox" data-glightbox="title: A chart showing planet visibility for the current month and year">
+        <img
+          src={`/assets/images/charts/planets_${year}_${month}.png`}
+          alt="Planets Chart"
+          class="rounded-lg opacity-90 hover:opacity-60 hover:scale-110 transition-opacity w-full h-24 object-contain"
+        />
+      </a>
+      <span class="text-starlight-400 text-xs">Planetary Chart</span>
     </div>
 
+    <div class="flex flex-col items-center gap-1">
+      <a href={`/assets/images/charts/planets_calendar_${year}_${month}.png`} class="glightbox" data-glightbox="title: A chart showing peak altitude for the visible planets for the current month and year">
+        <img
+          src={`/assets/images/charts/planets_calendar_${year}_${month}.png`}
+          alt="Planets Calendar"
+          class="rounded-lg opacity-90 hover:opacity-60 hover:scale-110 transition-opacity w-full h-24 object-contain"
+        />
+      </a>
+      <span class="text-starlight-400 text-xs">Planetary Visibility Chart</span>
+    </div>
+    
   </div>
 </footer>
