@@ -5,6 +5,7 @@ camera: "ASI2600MM"
 mount: "HEQ5"
 acquisitionSoftware: "ASIAir"
 telescope: "WO61"
+status: "Complete"
 coverImage: "/assets/images/projects/m31-andromeda/cover-image-m31-cover-image.png"
 images:
   - "/assets/images/projects/m31-andromeda/cover-image-m31-cover-image.png"
