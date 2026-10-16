@@ -36,6 +36,7 @@ const COVER_TITLE = "cover image";
 
 // Trilium label name -> frontmatter key
 const PROJECT_LABELS = {
+  projectStatus: "status",
   cameraUsed: "camera",
   mountUsed: "mount",
   telescopeUsed: "telescope",

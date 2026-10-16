@@ -8,6 +8,8 @@ import {
   getProjects,
   getProjectSessions,
   nightlyLog,
+  projectStage,
+  STAGE_LABELS,
   sessionRange,
   type Project,
 } from "../../utils/projects";
@@ -28,6 +30,7 @@ const sessions = await Promise.all(
   }))
 );
 
+const stage = projectStage(project);
 const totals = acquisitionTotals(data.acquisition);
 const log = nightlyLog(data.acquisition);
 const locations = [...new Set(sessions.map((s) => s.data.location).filter(Boolean))];
@@ -86,7 +89,19 @@ const sessionAnchor = (date: Date) => `session-${date.toISOString().slice(0, 10)
   <article class="w-full">
     <header class="mb-10">
       <h1 class="text-4xl font-bold text-starlight-100 sm:text-5xl">{data.title}</h1>
-      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-sm text-starlight-400">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-sm text-starlight-400">
+        <span
+          class:list={[
+            "rounded-full border px-3 py-0.5 text-xs font-medium",
+            {
+              "border-aurora-500 text-aurora-400": stage === "complete",
+              "border-nebula-500 text-nebula-400": stage === "current",
+              "border-starlight-400 text-starlight-300": stage === "future",
+            },
+          ]}
+        >
+          {STAGE_LABELS[stage]}
+        </span>
         {sessions.length > 0 && <span>{sessionRange(sessions)}</span>}
         <span class="text-aurora-500">
           {sessions.length} {sessions.length === 1 ? "session" : "sessions"}

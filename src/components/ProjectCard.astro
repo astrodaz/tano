@@ -1,0 +1,94 @@
+---
+import {
+  acquisitionTotals,
+  formatDate,
+  projectHref,
+  projectStage,
+  sessionRange,
+  STAGE_LABELS,
+  type Project,
+  type Session,
+} from "../utils/projects";
+
+interface Props {
+  project: Project;
+  sessions: Session[];
+}
+
+const { project, sessions } = Astro.props;
+const { data } = project;
+const stage = projectStage(project);
+const totals = acquisitionTotals(data.acquisition);
+const lastSession = sessions.at(-1)?.data.date;
+---
+
+<a
+  href={projectHref(project)}
+  class="group flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
+>
+  <div class="relative overflow-hidden">
+    {data.coverImage ? (
+      <img
+        src={data.coverImage}
+        alt={data.title}
+        class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    ) : (
+      <div class="w-full aspect-[16/9] bg-space-800"></div>
+    )}
+    <span
+      class:list={[
+        "absolute left-3 top-3 rounded-full border bg-space-950/70 px-3 py-1 text-xs font-medium backdrop-blur-sm",
+        {
+          "border-aurora-500 text-aurora-400": stage === "complete",
+          "border-nebula-500 text-nebula-400": stage === "current",
+          "border-starlight-400 text-starlight-300": stage === "future",
+        },
+      ]}
+    >
+      {STAGE_LABELS[stage]}
+    </span>
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <h4 class="text-xl font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+      {data.title}
+    </h4>
+    <p class="mt-1 text-sm text-starlight-400">
+      {[data.telescope, data.camera].filter(Boolean).join(" · ")}
+    </p>
+    {sessions.length > 0 && (
+      <p class="mt-1 text-sm text-starlight-500">
+        {sessions.length} {sessions.length === 1 ? "session" : "sessions"} · {sessionRange(sessions)}
+      </p>
+    )}
+
+    {stage === "future" ? (
+      totals.planned > 0 && (
+        <p class="mt-auto pt-4 text-xs text-starlight-400 tabular-nums">{totals.planned} subs planned</p>
+      )
+    ) : stage === "complete" ? (
+      totals.captured > 0 && (
+        <p class="mt-auto pt-4 text-xs text-starlight-400 tabular-nums">
+          {totals.captured} subs captured
+          {lastSession && <> · completed {formatDate(lastSession, { day: undefined })}</>}
+        </p>
+      )
+    ) : (
+      totals.planned > 0 && (
+        <div class="mt-auto pt-4">
+          <div class="flex justify-between text-xs text-starlight-400 mb-1.5 tabular-nums">
+            <span>{totals.captured} / {totals.planned} subs</span>
+            <span>{totals.percent}%</span>
+          </div>
+          <div class="h-1.5 rounded-full bg-space-700 overflow-hidden">
+            <div
+              class:list={["h-full rounded-full", totals.percent >= 100 ? "bg-aurora-500" : "bg-nebula-500"]}
+              style={`width:${Math.min(100, totals.percent)}%`}
+            ></div>
+          </div>
+        </div>
+      )
+    )}
+  </div>
+</a>

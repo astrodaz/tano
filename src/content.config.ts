@@ -25,6 +25,7 @@ const projects = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    status: z.string().optional(),
     camera: z.string().optional(),
     mount: z.string().optional(),
     telescope: z.string().optional(),

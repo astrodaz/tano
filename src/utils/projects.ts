@@ -24,6 +24,22 @@ export function filterColour(filter: string): string {
   return FILTER_COLOURS[filter.toLowerCase().replace(/[^a-z0-9]/g, "")] ?? "#888880";
 }
 
+export type ProjectStage = "future" | "current" | "complete";
+
+export const STAGE_LABELS: Record<ProjectStage, string> = {
+  future: "Not Started",
+  current: "In Progress",
+  complete: "Complete",
+};
+
+// Set by the projectStatus label in Trilium; no status counts as in progress
+export function projectStage(project: Project): ProjectStage {
+  const status = (project.data.status ?? "").toLowerCase().replace(/[^a-z]/g, "");
+  if (["complete", "completed", "done", "finished"].includes(status)) return "complete";
+  if (["notstarted", "planned", "future"].includes(status)) return "future";
+  return "current";
+}
+
 export function projectHref(project: Project): string {
   return `/projects/${project.id}/`;
 }
