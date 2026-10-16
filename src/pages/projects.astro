@@ -2,6 +2,21 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import { projectsContent } from "../config/projects.ts";
 import MoonSideBar from "../components/MoonSideBar.astro";
+import {
+  acquisitionTotals,
+  getProjects,
+  getProjectSessions,
+  projectHref,
+  sessionRange,
+} from "../utils/projects";
+
+const projects = await Promise.all(
+  (await getProjects()).map(async (project) => ({
+    project,
+    sessions: await getProjectSessions(project),
+    totals: acquisitionTotals(project.data.acquisition),
+  }))
+);
 ---
 
 <PageLayout title={projectsContent.meta.title} description={projectsContent.meta.description}>
@@ -11,24 +26,8 @@ import MoonSideBar from "../components/MoonSideBar.astro";
     <MoonSideBar />
 
     <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
-      <h3 class="text-lg font-bold text-starlight-200 mb-4">Images</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/projects/" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-            All Images
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
       <h3 class="text-lg font-bold text-starlight-200 mb-4">Fellow Imagers</h3>
       <ul class="space-y-2">
-        <li>
-          <a href="http://nightskyimages.co.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-            Steve Richards
-          </a>
-        </li>
         <li>
           <a href="http://www.digitalsky.org.uk/" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
             Pete Lawrence
@@ -65,11 +64,6 @@ import MoonSideBar from "../components/MoonSideBar.astro";
             PixInsight
           </a>
         </li>
-        <li>
-          <a href="http://britastro.org" target="_blank" class="text-starlight-400 hover:text-nebula-500 transition-colors">
-            The BAA
-          </a>
-        </li>
       </ul>
     </div>
   </div>
@@ -82,6 +76,56 @@ import MoonSideBar from "../components/MoonSideBar.astro";
     <p class="mt-4 text-lg leading-8 text-starlight-400">
       {projectsContent.description}
     </p>
+
+    {projects.length > 0 && (
+      <section class="mt-10">
+        <h3 class="text-3xl font-bold text-starlight-200 mb-6">Current Projects</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map(({ project, sessions, totals }) => (
+            <a
+              href={projectHref(project)}
+              class="group flex flex-col rounded-2xl border border-space-700 bg-space-900 overflow-hidden hover:border-nebula-500 transition-all duration-300"
+            >
+              {project.data.coverImage && (
+                <div class="overflow-hidden">
+                  <img
+                    src={project.data.coverImage}
+                    alt={project.data.title}
+                    class="w-full aspect-[16/9] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
+              <div class="flex flex-1 flex-col p-5">
+                <h4 class="text-xl font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+                  {project.data.title}
+                </h4>
+                <p class="mt-1 text-sm text-starlight-400">
+                  {[project.data.telescope, project.data.camera].filter(Boolean).join(" · ")}
+                </p>
+                <p class="mt-1 text-sm text-starlight-500">
+                  {sessions.length} {sessions.length === 1 ? "session" : "sessions"}
+                  {sessions.length > 0 && <> · {sessionRange(sessions)}</>}
+                </p>
+                {totals.planned > 0 && (
+                  <div class="mt-auto pt-4">
+                    <div class="flex justify-between text-xs text-starlight-400 mb-1.5 tabular-nums">
+                      <span>{totals.captured} / {totals.planned} subs</span>
+                      <span>{totals.percent}%</span>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-space-700 overflow-hidden">
+                      <div
+                        class:list={["h-full rounded-full", totals.percent >= 100 ? "bg-aurora-500" : "bg-nebula-500"]}
+                        style={`width:${Math.min(100, totals.percent)}%`}
+                      ></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mt-10">
     {

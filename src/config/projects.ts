@@ -1,19 +1,19 @@
 export const projectsContent = {
   meta: {
-    title: "Images - The Alan Norman Observatory",
-    description: "Astrophotography images from the Alan Norman Observatory",
+    title: "Imaging Projects - The Alan Norman Observatory",
+    description: "Astrophotography imaging projects from the Alan Norman Observatory",
   },
-  title: "Astrophotography Images",
+  title: "Astrophotography Projects",
   description:
-    "A selection of astrophotography images captured from the Alan Norman Observatory in rural Bedfordshire.",
+    "Imaging project plans",
   sections: [
     {
       header: "Nebulae",
       items: [
         {
-          title: "IC405 - Flaming Star Nebula",
+          title: "NGC7635 - Bubble Nebula",
           description:
-            "The Flaming Star Nebula in Auriga, captured in RGB.",
+            "The Bubble and star cluster M52",
           image: "/assets/images/projects/IC405.png",
           href: "#",
         },
@@ -142,10 +142,10 @@ export const projectsContent = {
       header: "Galaxies",
       items: [
         {
-          title: "",
+          title: "Andromeda - M31",
           description: "",
-          image: "/assets/images/projects/NGC_891_LRGB.jpg",
-          href: "#",
+          image: "/assets/images/projects/m31-andromeda/object-project-notes-image.png",
+          href: "/projects/m31-andromeda",
         },
         {
           title: "",

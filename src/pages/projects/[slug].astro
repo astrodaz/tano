@@ -1,0 +1,253 @@
+---
+import { render } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import {
+  acquisitionTotals,
+  filterColour,
+  formatDate,
+  getProjects,
+  getProjectSessions,
+  nightlyLog,
+  sessionRange,
+  type Project,
+} from "../../utils/projects";
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: Project };
+const { data } = project;
+const { Content } = await render(project);
+
+const sessions = await Promise.all(
+  (await getProjectSessions(project)).map(async (session) => ({
+    ...session,
+    Content: (await render(session)).Content,
+  }))
+);
+
+const totals = acquisitionTotals(data.acquisition);
+const log = nightlyLog(data.acquisition);
+const locations = [...new Set(sessions.map((s) => s.data.location).filter(Boolean))];
+
+const equipment = [
+  ["Telescope", data.telescope],
+  ["Camera", data.camera],
+  ["Mount", data.mount],
+  ["Acquisition", data.acquisitionSoftware],
+].filter(([, value]) => value);
+
+const sessionAnchor = (date: Date) => `session-${date.toISOString().slice(0, 10)}`;
+---
+
+<PageLayout title={data.title} description={`Imaging project notes for ${data.title}`}>
+
+  <!-- Sidebar -->
+  <div slot="sidebar">
+    {equipment.length > 0 && (
+      <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+        <h3 class="text-lg font-bold text-starlight-200 mb-4">Equipment</h3>
+        <dl class="space-y-3 text-sm">
+          {equipment.map(([label, value]) => (
+            <div class="flex justify-between gap-4">
+              <dt class="text-starlight-500">{label}</dt>
+              <dd class="text-starlight-200 text-right">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    )}
+
+    {sessions.length > 0 && (
+      <div class="rounded-xl border border-space-700 bg-space-900 p-6 mb-6">
+        <h3 class="text-lg font-bold text-starlight-200 mb-4">Sessions</h3>
+        <ul class="space-y-2">
+          {sessions.map((session) => (
+            <li>
+              <a href={`#${sessionAnchor(session.data.date)}`} class="text-sm text-starlight-400 hover:text-nebula-500 transition-colors">
+                {formatDate(session.data.date, { weekday: "short" })}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="rounded-xl border border-space-700 bg-space-900 p-6">
+      <a href="/projects/" class="text-nebula-500 hover:text-nebula-300 transition-colors text-sm">
+        ← All Projects
+      </a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <article class="w-full">
+    <header class="mb-10">
+      <h1 class="text-4xl font-bold text-starlight-100 sm:text-5xl">{data.title}</h1>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-sm text-starlight-400">
+        {sessions.length > 0 && <span>{sessionRange(sessions)}</span>}
+        <span class="text-aurora-500">
+          {sessions.length} {sessions.length === 1 ? "session" : "sessions"}
+        </span>
+        {locations.length > 0 && <span>{locations.join(", ")}</span>}
+      </div>
+    </header>
+
+    {data.coverImage && (
+      <figure class="mb-10">
+        <a
+          href={data.coverImage}
+          class="glightbox group block overflow-hidden rounded-2xl border border-space-700 hover:border-nebula-500 transition-colors duration-300"
+          data-glightbox={`title: ${data.title}${data.coverCaption ? `; description: ${data.coverCaption}` : ""}`}
+        >
+          <img
+            src={data.coverImage}
+            alt={data.title}
+            class="w-full h-auto group-hover:scale-[1.02] transition-transform duration-500"
+          />
+        </a>
+        {data.coverCaption && (
+          <figcaption class="mt-3 text-sm text-starlight-400">{data.coverCaption}</figcaption>
+        )}
+      </figure>
+    )}
+
+    <!-- Acquisition progress -->
+    {data.acquisition.length > 0 && (
+      <section class="rounded-xl border border-space-700 bg-space-900 p-6 mb-10">
+        <div class="flex items-baseline justify-between gap-4 mb-6">
+          <h2 class="text-2xl font-bold text-starlight-100">Acquisition</h2>
+          <span class="text-sm text-starlight-400">
+            <span class="text-starlight-100 font-semibold tabular-nums">{totals.captured}</span>
+            {totals.planned > 0 && <> / {totals.planned} subs · {totals.percent}%</>}
+          </span>
+        </div>
+
+        <ul class="space-y-4">
+          {data.acquisition.map((item) => {
+            const percent = item.planned ? Math.min(100, ((item.captured ?? 0) / item.planned) * 100) : 0;
+            return (
+              <li class="grid grid-cols-[4rem_1fr_auto] items-center gap-4">
+                <span class="flex items-center gap-2 text-sm font-medium text-starlight-200">
+                  <span class="inline-block h-2.5 w-2.5 rounded-full" style={`background:${filterColour(item.filter)}`}></span>
+                  {item.filter}
+                </span>
+                <span class="h-2 rounded-full bg-space-700 overflow-hidden">
+                  <span
+                    class:list={["block h-full rounded-full", item.status === "Done" ? "bg-aurora-500" : "bg-nebula-500"]}
+                    style={`width:${percent}%`}
+                  ></span>
+                </span>
+                <span class="text-sm text-starlight-400 tabular-nums text-right min-w-[5.5rem]">
+                  {item.captured ?? "–"}{item.planned !== undefined && <> / {item.planned}</>}
+                  {item.status && <span class="block text-xs text-starlight-500">{item.status}</span>}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+
+        {log.rows.length > 0 && (
+          <details class="mt-6 group">
+            <summary class="cursor-pointer text-sm text-nebula-500 hover:text-nebula-300 transition-colors list-none">
+              <span class="group-open:hidden">Show</span><span class="hidden group-open:inline">Hide</span> subs per night
+            </summary>
+            <div class="mt-4 overflow-x-auto">
+              <table class="w-full text-sm tabular-nums">
+                <thead>
+                  <tr class="border-b border-space-700 text-starlight-500">
+                    <th class="py-2 pr-4 text-left font-medium">Filter</th>
+                    {log.nights.map((night) => <th class="py-2 px-3 text-right font-medium">{night}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {log.rows.map((row) => (
+                    <tr class="border-b border-space-800">
+                      <td class="py-2 pr-4 text-starlight-200">{row.filter}</td>
+                      {row.counts.map((count) => (
+                        <td class="py-2 px-3 text-right text-starlight-400">{count ?? "–"}</td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr class="text-starlight-100 font-semibold">
+                    <td class="py-2 pr-4">Total</td>
+                    {log.totals.map((total) => <td class="py-2 px-3 text-right">{total}</td>)}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        )}
+      </section>
+    )}
+
+    <!-- Project notes -->
+    <div class="project-prose prose prose-invert prose-lg max-w-none mb-12
+      prose-headings:text-starlight-100
+      prose-p:text-starlight-400
+      prose-a:text-nebula-500
+      prose-a:no-underline
+      hover:prose-a:text-nebula-300
+      prose-strong:text-starlight-200
+      prose-li:text-starlight-400
+      prose-img:rounded-xl">
+      <Content />
+    </div>
+
+    <!-- Session log -->
+    {sessions.length > 0 && (
+      <section>
+        <h2 class="text-3xl font-bold text-starlight-100 mb-6">Imaging Sessions</h2>
+        <div class="space-y-4">
+          {sessions.map(({ data: session, Content: SessionContent }) => (
+            <details id={sessionAnchor(session.date)} class="group rounded-xl border border-space-700 bg-space-900 scroll-mt-24">
+              <summary class="flex cursor-pointer list-none flex-wrap items-center justify-between gap-x-6 gap-y-3 p-5">
+                <h3 class="text-lg font-semibold text-starlight-100 group-hover:text-nebula-500 transition-colors">
+                  {formatDate(session.date, { weekday: "long" })}
+                </h3>
+                <span class="flex flex-wrap items-center gap-2 text-xs">
+                  {session.location && <span class="chip">{session.location}</span>}
+                  {session.temperature !== undefined && <span class="chip">{session.temperature}°C</span>}
+                  {session.bortle !== undefined && <span class="chip">Bortle {session.bortle}</span>}
+                  {session.moonPhase !== undefined && <span class="chip">Moon {Math.round(session.moonPhase)}%</span>}
+                  <svg class="ml-1 h-5 w-5 text-starlight-400 transition-transform duration-300 group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <div class="project-prose prose prose-invert max-w-none border-t border-space-700 p-5
+                prose-headings:text-starlight-100
+                prose-p:text-starlight-400
+                prose-strong:text-starlight-200
+                prose-li:text-starlight-400
+                prose-th:text-starlight-200
+                prose-td:text-starlight-400">
+                <SessionContent />
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .chip {
+    @apply rounded-full border border-space-700 px-2.5 py-0.5 text-starlight-400;
+  }
+  /* Wide markdown tables (guiding analysis) scroll rather than overflow */
+  .project-prose :global(table) {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.85em;
+  }
+  .project-prose :global(img) {
+    height: auto;
+  }
+</style>
+</PageLayout>
