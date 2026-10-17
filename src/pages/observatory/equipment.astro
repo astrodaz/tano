@@ -118,6 +118,8 @@ import ObservatorySideBar from "../../components/ObservatorySideBar.astro";
         </div>
         ))
       }
+      </div>
+
       <h2 class="mb-2 text-2xl font-bold text-starlight-200">
         {equipmentContent.hardware.title}
       </h2>
@@ -164,11 +166,13 @@ import ObservatorySideBar from "../../components/ObservatorySideBar.astro";
             
         </div>
         ))
-      }      
+      }
+      </div>
 
       <h2 class="mb-2 text-2xl font-bold text-starlight-200">
         {equipmentContent.camera.title}
       </h2>
+      <div class="py-10">
       {
         equipmentContent.camera.items.map((item) => (
         <div class="pb-10 border-l border-space-700 last:border-l-0">

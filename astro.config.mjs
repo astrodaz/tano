@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
+// Tailwind runs through PostCSS (postcss.config.mjs + src/styles/global.css)
 export default defineConfig({
-  integrations: [tailwind()],
   server: {
     port: 4321,
     host: true
@@ -19,8 +19,11 @@ export default defineConfig({
     }
   },
   markdown: {
-    rehypePlugins: [
-      ['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }]
-    ]
+    // unified (remark/rehype) rather than Astro 7's default Sätteri, so rehype plugins still run
+    processor: unified({
+      rehypePlugins: [
+        ['rehype-external-links', { target: '_blank', rel: ['noopener', 'noreferrer'] }]
+      ]
+    })
   },
 });
