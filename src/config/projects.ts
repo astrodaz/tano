@@ -5,7 +5,6 @@ export const projectsContent = {
   },
   title: "Astrophotography Projects",
   description:
-    "Imaging project plans",
-  sections: []
+    "Imaging project plans"
 };
 
